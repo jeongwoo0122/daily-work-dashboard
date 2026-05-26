@@ -157,6 +157,8 @@
   .item-bullets li { font-size: 13px; line-height: 1.7; color: var(--text); padding-left: 14px; position: relative; }
   .item-bullets li::before { content: "·"; position: absolute; left: 4px; top: -1px; color: var(--text-subtle); font-weight: 700; font-size: 14px; }
   .item-bullets:last-child { margin-bottom: 0; }
+  .item-narrative { font-size: 13.5px; line-height: 1.65; color: var(--text); margin: 4px 0 12px; padding: 8px 12px; background: var(--surface-2); border-left: 2px solid var(--accent); border-radius: 4px; }
+  .item-narrative:last-child { margin-bottom: 0; }
   .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; padding: 1px 8px; border-radius: 20px; font-weight: 500; line-height: 1.6; border: 1px solid transparent; }
   .badge.draft    { background: var(--draft-bg);   color: var(--draft);   border-color: var(--draft-border); }
   .badge.review   { background: var(--accent-bg);  color: var(--accent);  border-color: var(--accent-border); }
@@ -254,13 +256,13 @@
   
 
   
+
+  
   <div class="section">
     <div class="section-head">
-      <div class="section-icon deploy">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M14.064 0h.186C15.216 0 16 .784 16 1.75v.186a8.752 8.752 0 0 1-2.564 6.186l-.458.459c-.314.314-.641.616-.979.904v3.207c0 .608-.315 1.172-.833 1.49l-2.774 1.707a.749.749 0 0 1-1.11-.418l-.954-3.102a1.214 1.214 0 0 1-.145-.125L3.754 9.816a1.218 1.218 0 0 1-.124-.145L.528 8.717a.749.749 0 0 1-.418-1.11l1.71-2.774A1.748 1.748 0 0 1 3.31 4h3.204c.288-.338.59-.665.904-.979l.459-.458A8.749 8.749 0 0 1 14.064 0ZM8.938 3.623h-.002l-.458.458c-.76.76-1.437 1.598-2.02 2.5l-1.5 2.317 2.143 2.143 2.317-1.5c.902-.583 1.74-1.26 2.499-2.02l.459-.458a7.25 7.25 0 0 0 2.123-5.127V1.75a.25.25 0 0 0-.25-.25h-.186a7.249 7.249 0 0 0-5.125 2.123ZM3.56 14.56c-.732.732-2.334 1.045-3.005 1.148a.234.234 0 0 1-.201-.064.234.234 0 0 1-.064-.201c.103-.671.416-2.273 1.15-3.003a1.502 1.502 0 1 1 2.12 2.12Zm6.94-3.935c-.088.06-.177.118-.266.175l-2.35 1.521.548 1.783 1.949-1.2a.25.25 0 0 0 .119-.213ZM3.678 8.116 5.2 5.766c.058-.09.117-.178.176-.266H3.309a.25.25 0 0 0-.213.119l-1.2 1.95ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
-      </div>
-      <div class="section-title">오늘 배포됨</div>
-      <span class="section-count">9</span>
+      <div class="section-icon deploy"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M14.064 0h.186C15.216 0 16 .784 16 1.75v.186a8.752 8.752 0 0 1-2.564 6.186l-.458.459c-.314.314-.641.616-.979.904v3.207c0 .608-.315 1.172-.833 1.49l-2.774 1.707a.749.749 0 0 1-1.11-.418l-.954-3.102a1.214 1.214 0 0 1-.145-.125L3.754 9.816a1.218 1.218 0 0 1-.124-.145L.528 8.717a.749.749 0 0 1-.418-1.11l1.71-2.774A1.748 1.748 0 0 1 3.31 4h3.204c.288-.338.59-.665.904-.979l.459-.458A8.749 8.749 0 0 1 14.064 0ZM8.938 3.623h-.002l-.458.458c-.76.76-1.437 1.598-2.02 2.5l-1.5 2.317 2.143 2.143 2.317-1.5c.902-.583 1.74-1.26 2.499-2.02l.459-.458a7.25 7.25 0 0 0 2.123-5.127V1.75a.25.25 0 0 0-.25-.25h-.186a7.249 7.249 0 0 0-5.125 2.123ZM3.56 14.56c-.732.732-2.334 1.045-3.005 1.148a.234.234 0 0 1-.201-.064.234.234 0 0 1-.064-.201c.103-.671.416-2.273 1.15-3.003a1.502 1.502 0 1 1 2.12 2.12Zm6.94-3.935c-.088.06-.177.118-.266.175l-2.35 1.521.548 1.783 1.949-1.2a.25.25 0 0 0 .119-.213ZM3.678 8.116 5.2 5.766c.058-.09.117-.178.176-.266H3.309a.25.25 0 0 0-.213.119l-1.2 1.95ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg></div>
+      <div class="section-title">오늘 Prod 배포</div>
+      <span class="section-count">2</span>
       <div class="section-hint">실제 사용자에게 반영된 변경</div>
     </div>
     
@@ -284,96 +286,6 @@
         <span class="sep">·</span><span>Clinics Admin Deploy (Prod)</span>
         <span class="sep">·</span>
         <span>15:05 KST</span>
-      </div>
-      
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c5" href="https://github.com/jeongwoo0122" target="_blank" rel="noopener" title="@jeongwoo0122">
-        <img src="https://avatars.githubusercontent.com/u/169112927?v=4" alt="jeongwoo0122" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-for-clinics-admin">
-    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/actions/runs/26435136654" target="_blank" rel="noopener" aria-label="Merge pull request #531 from Tesser/docs/improve-markdown-documentation 보기"></a>
-    <div class="pr-status deploy">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">Merge pull request #531 from Tesser/docs/improve-markdown-documentation</span>
-        
-        <span class="label label-release">release</span>
-        <span class="badge prod">prod</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-for-clinics-admin</span>
-        
-        <span class="sep">·</span><span class="commit-sha">b997961</span>
-        <span class="sep">·</span><span>Clinics Admin Deploy (Dev)</span>
-        <span class="sep">·</span>
-        <span>14:58 KST</span>
-      </div>
-      
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c3" href="https://github.com/jisunipark" target="_blank" rel="noopener" title="@jisunipark">
-        <img src="https://avatars.githubusercontent.com/u/148641571?v=4" alt="jisunipark" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-for-clinics-admin">
-    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/actions/runs/26435041700" target="_blank" rel="noopener" aria-label="Merge pull request #534 from Tesser/hotfix/3.7 보기"></a>
-    <div class="pr-status deploy">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">Merge pull request #534 from Tesser/hotfix/3.7</span>
-        
-        <span class="label label-release">release</span>
-        <span class="badge prod">prod</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-for-clinics-admin</span>
-        
-        <span class="sep">·</span><span class="commit-sha">74c330a</span>
-        <span class="sep">·</span><span>Clinics Admin Deploy (Dev)</span>
-        <span class="sep">·</span>
-        <span>14:55 KST</span>
-      </div>
-      
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c5" href="https://github.com/jeongwoo0122" target="_blank" rel="noopener" title="@jeongwoo0122">
-        <img src="https://avatars.githubusercontent.com/u/169112927?v=4" alt="jeongwoo0122" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-for-clinics-admin">
-    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/actions/runs/26433979648" target="_blank" rel="noopener" aria-label="docs(clinics): update changelog for clinics/v3.7.0 보기"></a>
-    <div class="pr-status deploy">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">docs(clinics): update changelog for clinics/v3.7.0</span>
-        
-        <span class="label label-release">release</span>
-        <span class="badge prod">prod</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-for-clinics-admin</span>
-        
-        <span class="sep">·</span><span class="commit-sha">004bafb</span>
-        <span class="sep">·</span><span>Clinics Admin Deploy (Dev)</span>
-        <span class="sep">·</span>
-        <span>14:23 KST</span>
       </div>
       
       
@@ -415,6 +327,172 @@
     </div>
   </div>
   
+    
+  </div>
+  
+
+  
+  <div class="section">
+    <details>
+      <summary style="list-style: none; cursor: pointer;">
+        <div class="section-head" style="background: var(--surface-2);">
+          <div class="section-icon deploy" style="background: var(--draft);"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M14.064 0h.186C15.216 0 16 .784 16 1.75v.186a8.752 8.752 0 0 1-2.564 6.186l-.458.459c-.314.314-.641.616-.979.904v3.207c0 .608-.315 1.172-.833 1.49l-2.774 1.707a.749.749 0 0 1-1.11-.418l-.954-3.102a1.214 1.214 0 0 1-.145-.125L3.754 9.816a1.218 1.218 0 0 1-.124-.145L.528 8.717a.749.749 0 0 1-.418-1.11l1.71-2.774A1.748 1.748 0 0 1 3.31 4h3.204c.288-.338.59-.665.904-.979l.459-.458A8.749 8.749 0 0 1 14.064 0ZM8.938 3.623h-.002l-.458.458c-.76.76-1.437 1.598-2.02 2.5l-1.5 2.317 2.143 2.143 2.317-1.5c.902-.583 1.74-1.26 2.499-2.02l.459-.458a7.25 7.25 0 0 0 2.123-5.127V1.75a.25.25 0 0 0-.25-.25h-.186a7.249 7.249 0 0 0-5.125 2.123ZM3.56 14.56c-.732.732-2.334 1.045-3.005 1.148a.234.234 0 0 1-.201-.064.234.234 0 0 1-.064-.201c.103-.671.416-2.273 1.15-3.003a1.502 1.502 0 1 1 2.12 2.12Zm6.94-3.935c-.088.06-.177.118-.266.175l-2.35 1.521.548 1.783 1.949-1.2a.25.25 0 0 0 .119-.213ZM3.678 8.116 5.2 5.766c.058-.09.117-.178.176-.266H3.309a.25.25 0 0 0-.213.119l-1.2 1.95ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg></div>
+          <div class="section-title" style="color: var(--text-muted);">Dev / Staging 배포</div>
+          <span class="section-count">6</span>
+          <div class="section-hint">머지로 자동 발생한 비-Prod 배포 — 클릭해 펼치기</div>
+        </div>
+      </summary>
+      
+  <div class="item" data-repo="ontol-for-clinics-admin">
+    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/actions/runs/26438053556" target="_blank" rel="noopener" aria-label="Merge pull request #536 from Tesser/feature/auth-improvements 보기"></a>
+    <div class="pr-status deploy">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">Merge pull request #536 from Tesser/feature/auth-improvements</span>
+        
+        <span class="label label-release">release</span>
+        <span class="badge staging">dev</span>
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">ontol-for-clinics-admin</span>
+        
+        <span class="sep">·</span><span class="commit-sha">7710e34</span>
+        <span class="sep">·</span><span>Clinics Admin Deploy (Dev)</span>
+        <span class="sep">·</span>
+        <span>16:15 KST</span>
+      </div>
+      
+      
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c3" href="https://github.com/jisunipark" target="_blank" rel="noopener" title="@jisunipark">
+        <img src="https://avatars.githubusercontent.com/u/148641571?v=4" alt="jisunipark" loading="lazy">
+      </a>
+    </div>
+  </div>
+  
+  <div class="item" data-repo="ontol-for-clinics-admin">
+    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/actions/runs/26435136654" target="_blank" rel="noopener" aria-label="Merge pull request #531 from Tesser/docs/improve-markdown-documentation 보기"></a>
+    <div class="pr-status deploy">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">Merge pull request #531 from Tesser/docs/improve-markdown-documentation</span>
+        
+        <span class="label label-release">release</span>
+        <span class="badge staging">dev</span>
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">ontol-for-clinics-admin</span>
+        
+        <span class="sep">·</span><span class="commit-sha">b997961</span>
+        <span class="sep">·</span><span>Clinics Admin Deploy (Dev)</span>
+        <span class="sep">·</span>
+        <span>14:58 KST</span>
+      </div>
+      
+      
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c3" href="https://github.com/jisunipark" target="_blank" rel="noopener" title="@jisunipark">
+        <img src="https://avatars.githubusercontent.com/u/148641571?v=4" alt="jisunipark" loading="lazy">
+      </a>
+    </div>
+  </div>
+  
+  <div class="item" data-repo="ontol-for-clinics-admin">
+    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/actions/runs/26435041700" target="_blank" rel="noopener" aria-label="Merge pull request #534 from Tesser/hotfix/3.7 보기"></a>
+    <div class="pr-status deploy">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">Merge pull request #534 from Tesser/hotfix/3.7</span>
+        
+        <span class="label label-release">release</span>
+        <span class="badge staging">dev</span>
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">ontol-for-clinics-admin</span>
+        
+        <span class="sep">·</span><span class="commit-sha">74c330a</span>
+        <span class="sep">·</span><span>Clinics Admin Deploy (Dev)</span>
+        <span class="sep">·</span>
+        <span>14:55 KST</span>
+      </div>
+      
+      
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c5" href="https://github.com/jeongwoo0122" target="_blank" rel="noopener" title="@jeongwoo0122">
+        <img src="https://avatars.githubusercontent.com/u/169112927?v=4" alt="jeongwoo0122" loading="lazy">
+      </a>
+    </div>
+  </div>
+  
+  <div class="item" data-repo="ontol-for-clinics-admin">
+    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/actions/runs/26433979648" target="_blank" rel="noopener" aria-label="docs(clinics): update changelog for clinics/v3.7.0 보기"></a>
+    <div class="pr-status deploy">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">docs(clinics): update changelog for clinics/v3.7.0</span>
+        
+        <span class="label label-release">release</span>
+        <span class="badge staging">dev</span>
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">ontol-for-clinics-admin</span>
+        
+        <span class="sep">·</span><span class="commit-sha">004bafb</span>
+        <span class="sep">·</span><span>Clinics Admin Deploy (Dev)</span>
+        <span class="sep">·</span>
+        <span>14:23 KST</span>
+      </div>
+      
+      
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c5" href="https://github.com/jeongwoo0122" target="_blank" rel="noopener" title="@jeongwoo0122">
+        <img src="https://avatars.githubusercontent.com/u/169112927?v=4" alt="jeongwoo0122" loading="lazy">
+      </a>
+    </div>
+  </div>
+  
+  <div class="item" data-repo="ontol-for-clinics-admin">
+    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/actions/runs/26428572624" target="_blank" rel="noopener" aria-label="🔧 chore(deps): tsx를 root devDependency로 명시 보기"></a>
+    <div class="pr-status deploy">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">🔧 chore(deps): tsx를 root devDependency로 명시</span>
+        
+        <span class="label label-release">release</span>
+        <span class="badge staging">dev</span>
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">ontol-for-clinics-admin</span>
+        
+        <span class="sep">·</span><span class="commit-sha">d91e68e</span>
+        <span class="sep">·</span><span>Clinics Admin Deploy (Dev) · Survey Deploy (Dev)</span>
+        <span class="sep">·</span>
+        <span>11:20 KST</span>
+      </div>
+      
+      
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c5" href="https://github.com/jeongwoo0122" target="_blank" rel="noopener" title="@jeongwoo0122">
+        <img src="https://avatars.githubusercontent.com/u/169112927?v=4" alt="jeongwoo0122" loading="lazy">
+      </a>
+    </div>
+  </div>
+  
   <div class="item" data-repo="ontol-clinics-backend">
     <a class="item-link" href="https://github.com/Tesser/ontol-clinics-backend/actions/runs/26428308353" target="_blank" rel="noopener" aria-label="Merge pull request #1052 from Tesser/develop 보기"></a>
     <div class="pr-status deploy">
@@ -425,13 +503,13 @@
         <span class="item-title">Merge pull request #1052 from Tesser/develop</span>
         
         <span class="label label-release">release</span>
-        <span class="badge prod">prod</span>
+        <span class="badge draft">—</span>
       </div>
       <div class="item-subline">
         <span class="repo-name">ontol-clinics-backend</span>
         
         <span class="sep">·</span><span class="commit-sha">9cc9f1e</span>
-        <span class="sep">·</span><span>Deploy TY-Report</span>
+        <span class="sep">·</span><span>Deploy TY-Report · Deploy TY-Report Frontend · Deploy</span>
         <span class="sep">·</span>
         <span>11:11 KST</span>
       </div>
@@ -445,97 +523,7 @@
     </div>
   </div>
   
-  <div class="item" data-repo="ontol-clinics-backend">
-    <a class="item-link" href="https://github.com/Tesser/ontol-clinics-backend/actions/runs/26428308319" target="_blank" rel="noopener" aria-label="Merge pull request #1052 from Tesser/develop 보기"></a>
-    <div class="pr-status deploy">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">Merge pull request #1052 from Tesser/develop</span>
-        
-        <span class="label label-release">release</span>
-        <span class="badge prod">prod</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-clinics-backend</span>
-        
-        <span class="sep">·</span><span class="commit-sha">9cc9f1e</span>
-        <span class="sep">·</span><span>Deploy TY-Report Frontend</span>
-        <span class="sep">·</span>
-        <span>11:11 KST</span>
-      </div>
-      
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c0" href="https://github.com/taehunss" target="_blank" rel="noopener" title="@taehunss">
-        <img src="https://avatars.githubusercontent.com/u/117618060?v=4" alt="taehunss" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-clinics-backend">
-    <a class="item-link" href="https://github.com/Tesser/ontol-clinics-backend/actions/runs/26428308340" target="_blank" rel="noopener" aria-label="Merge pull request #1052 from Tesser/develop 보기"></a>
-    <div class="pr-status deploy">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">Merge pull request #1052 from Tesser/develop</span>
-        
-        <span class="label label-release">release</span>
-        <span class="badge prod">prod</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-clinics-backend</span>
-        
-        <span class="sep">·</span><span class="commit-sha">9cc9f1e</span>
-        <span class="sep">·</span><span>Deploy</span>
-        <span class="sep">·</span>
-        <span>11:11 KST</span>
-      </div>
-      
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c0" href="https://github.com/taehunss" target="_blank" rel="noopener" title="@taehunss">
-        <img src="https://avatars.githubusercontent.com/u/117618060?v=4" alt="taehunss" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-clinics-backend">
-    <a class="item-link" href="https://github.com/Tesser/ontol-clinics-backend/actions/runs/26428225629" target="_blank" rel="noopener" aria-label="Develop 보기"></a>
-    <div class="pr-status deploy">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">Develop</span>
-        
-        <span class="label label-release">release</span>
-        <span class="badge prod">prod</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-clinics-backend</span>
-        
-        <span class="sep">·</span><span class="commit-sha">54655f1</span>
-        <span class="sep">·</span><span>CI for Production</span>
-        <span class="sep">·</span>
-        <span>11:08 KST</span>
-      </div>
-      
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c0" href="https://github.com/taehunss" target="_blank" rel="noopener" title="@taehunss">
-        <img src="https://avatars.githubusercontent.com/u/117618060?v=4" alt="taehunss" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-    
+    </details>
   </div>
   
 
@@ -546,11 +534,57 @@
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005Z"/></svg>
       </div>
       <div class="section-title">오늘 머지됨</div>
-      <span class="section-count">7</span>
+      <span class="section-count">8</span>
       <div class="section-hint">완료 — 다음 배포에 포함</div>
     </div>
     
       
+  <div class="item" data-repo="ontol-for-clinics-admin">
+    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/pull/536" target="_blank" rel="noopener" aria-label="Feature/auth improvements 보기"></a>
+    <div class="pr-status merged">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005Z"/></svg>
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">Feature/auth improvements</span>
+        <span class="item-id">#536</span>
+        <span class="label label-feat">feat</span><span class="label label-security">security</span>
+        
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">ontol-for-clinics-admin</span>
+        <span class="sep">·</span><span class="branch-arrow">feature/auth-improvements<span class="arrow">→</span>develop</span>
+        
+        
+        <span class="sep">·</span>
+        <span>16:15 KST</span>
+      </div>
+      
+      <ul class="item-bullets">
+        <li>로그아웃 동작이 SPA 내의 네비게이션에서 하드 리로드(window.location.replace)로 변경되었습니다. 이로써 로그아웃 처리 중 race condition 및 인증 만료 후 일시적으로 잘못된 상태가 발생하는 문제를 방지할 수 있습니다.</li><li>회원가입 시 초대 수락 후 리디렉션 경로가 로그인 화면에서 &#39;초대 완료&#39; 전용 화면으로 변경되어, 보다 명확한 플로우를 제공합니다.</li><li>인증 레이아웃의 padding, gap, 스크롤 처리를 개선하여 반응성과 접근성을 높였습니다.</li>
+      </ul>
+      
+      
+      <div class="item-meta-row">
+        
+        <span class="diffstat">
+          <span class="add">+26</span>
+          <span class="del">−18</span>
+          <span class="files">4 files</span>
+        </span>
+        
+        
+        
+      </div>
+      
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c3" href="https://github.com/jisunipark" target="_blank" rel="noopener" title="@jisunipark">
+        <img src="https://avatars.githubusercontent.com/u/148641571?v=4" alt="jisunipark" loading="lazy">
+      </a>
+    </div>
+  </div>
+  
   <div class="item" data-repo="ontol-for-clinics-admin">
     <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/pull/535" target="_blank" rel="noopener" aria-label="[DEV_TO_MAIN] v3.7.1 보기"></a>
     <div class="pr-status merged">
@@ -573,7 +607,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[ ] 상태 관리 변경</li>
+        <li>줄바꿈 처리 정책 통일: plainToDisplayHtml / htmlToPlain 함수 개선을 통해,</li><li>단일 \n은 &lt;br&gt;로 변환(줄바꿈), \n\n은 단락 경계(&lt;p&gt; 구분)로 처리합니다.</li><li>복사/미리보기 등 결과 화면이 직관적으로 일치하도록 로직을 명확히 했습니다.</li>
       </ul>
       
       
@@ -665,7 +699,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[ ] 상태 관리 변경</li>
+        <li>줄바꿈 표현 일치: 종합소견 미리보기와 복사 기능 간 줄바꿈 처리 로직을 통일했습니다.</li><li>기존에는 미리보기에서 단일 \n도 단락 경계로 처리되어 복사 결과와 차이가 발생했으나,</li><li>이제 단일 \n은 &lt;br&gt;, 연속된 \n\n 이상은 &lt;p&gt;로 처리하여 시각적으로 구분되고, 복사 결과와 완전히 일치합니다.</li>
       </ul>
       
       
@@ -711,7 +745,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[x] UI 컴포넌트 추가/수정</li><li>[x] API 연동</li><li>[x] 상태 관리 변경</li>
+        <li>Scribe(문서화) 주요 개선</li><li>종합/서술형 소견 입력 및 표시 방식에 RTF(Rich Text Format) 에디터 도입 및 툴바 확대</li><li>DnD(드래그앤드롭), 소견 카드 UI/UX 개선, 차별화된 하이라이트 및 diff 표시 적용</li>
       </ul>
       
       
@@ -757,7 +791,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] 코드가 오류나 경고 없이 정상적으로 동작합니다.</li><li>[ ] 코드는 프로젝트의 코딩 규칙 및 스타일 가이드를 준수합니다.</li><li>[ ] 코드는 모듈식이며 읽고 이해하기 쉽습니다.</li>
+        <li>지라 링크:</li><li>기타 관련 문서 링크:</li>
       </ul>
       
       
@@ -803,7 +837,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[x] UI 컴포넌트 추가/수정</li><li>severity 구분 표시에 따른 영상 소견 미리보기 개선 (빈 단락, divider 시각적 보존)</li><li>Drag &amp; Drop 중 복합 소견 카드 본문에서의 raw HTML 노출 방지</li>
+        <li>severity 구분 표시에 따른 영상 소견 미리보기 개선 (빈 단락, divider 시각적 보존)</li><li>Drag &amp; Drop 중 복합 소견 카드 본문에서의 raw HTML 노출 방지</li><li>RTF, plain text 경계 처리 유틸 추가(plainToDisplayHtml)</li>
       </ul>
       
       
@@ -849,7 +883,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[x] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[x] 상태 관리 변경</li>
+        <li>InsertionCell/테이블 상호작용 UX 및 UI 개선</li><li>후보 셀·드롭 가능 영역·비강조 영역·드롭 금지 등 멀티 상태에 대해 상태별 하이라이팅/시각화 일관성 개선(디자인 QA 피드백 중심).</li><li>DnD 진행 중 드롭 가능/불가 신호 및 ‘삽입’ 강조 효과 명확화.</li>
       </ul>
       
       
@@ -889,6 +923,52 @@
     </div>
     
       
+  <div class="item" data-repo="ontol-clinics-backend">
+    <a class="item-link" href="https://github.com/Tesser/ontol-clinics-backend/pull/1053" target="_blank" rel="noopener" aria-label="data-platform/scribe::feat: SAEROM 동기화 진단 가시성 + lock 충돌 감지 추가 보기"></a>
+    <div class="pr-status draft">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.25 1A2.25 2.25 0 0 1 4 5.372v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.251 2.251 0 0 1 3.25 1Zm9.5 14a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5ZM2.5 3.25a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0ZM3.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm9.5.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0ZM14 7.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0-3.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-3.5-2.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">data-platform/scribe::feat: SAEROM 동기화 진단 가시성 + lock 충돌 감지 추가</span>
+        <span class="item-id">#1053</span>
+        <span class="label label-feat">feat</span>
+        <span class="badge draft">Draft</span>
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">ontol-clinics-backend</span>
+        <span class="sep">·</span><span class="branch-arrow">feat/saerom-restore-diagnostics<span class="arrow">→</span>develop</span>
+        
+        
+        <span class="sep">·</span>
+        <span>16:17 KST</span>
+      </div>
+      
+      <ul class="item-bullets">
+        <li>2026-05-26 GM 2605210021 UNFINALIZE 30초 timeout 인시던트가 트리거. 슬랙 알림이 TCP request timed out after 30000ms 한 줄로 끝나 lock 충돌인지·네트워크 stall 인지·DB 부하인지 판단할 수 없었음.</li><li>cross-DB 진단 모듈 (packages/infrastructure/src/database/diagnostics) 신설, SAEROM processor 4개에 step 단위 로깅 + 구조화 에러 컨텍스트 추가, scribe slack 알림에 likelyCause / elapsedMs / Oracle·MSSQL 에러 코드 포함.</li><li>Lock-busy 에러 감지 시 (ORA-00054 / ORA-30006 / MSSQL 1222) raw driver 에러를 그대로 던지지 않고 한국어 사용자 메시지를 담은 BusinessException(CONFLICT) 으로 자동 변환.</li>
+      </ul>
+      
+      
+      <div class="item-meta-row">
+        
+        <span class="diffstat">
+          <span class="add">+905</span>
+          <span class="del">−179</span>
+          <span class="files">12 files</span>
+        </span>
+        
+        
+        
+      </div>
+      
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c2" href="https://github.com/ocean25511" target="_blank" rel="noopener" title="@ocean25511">
+        <img src="https://avatars.githubusercontent.com/u/245784607?v=4" alt="ocean25511" loading="lazy">
+      </a>
+    </div>
+  </div>
+  
   <div class="item" data-repo="ontol-for-clinics-admin">
     <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/pull/537" target="_blank" rel="noopener" aria-label="hotfix/3.7.2 보기"></a>
     <div class="pr-status open">
@@ -911,7 +991,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[x] API 연동</li><li>[x] 상태 관리 변경</li>
+        <li>기타: 라우트 진입 전 인증 처리 및 설정 값 사용 시 예외 처리/타임아웃 로직 추가</li><li>인증 복원(attemptSilentRefresh)을 시도할 때 네트워크 지연이나 응답 없음 등으로 무한 대기하는 상황을 방지하기 위해 3초의 타임아웃을 도입</li><li>병원 정보(hospitalInfo) API 프리로드 실패 시 더이상 throw하지 않고, 오류 로그만 남긴 뒤 화면 진입은 그대로 진행하도록 완화 (사이드바 등은 비어있게 됨)</li>
       </ul>
       
       
@@ -931,52 +1011,6 @@
     <div class="item-author-col">
       <a class="item-author av-c5" href="https://github.com/jeongwoo0122" target="_blank" rel="noopener" title="@jeongwoo0122">
         <img src="https://avatars.githubusercontent.com/u/169112927?v=4" alt="jeongwoo0122" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-for-clinics-admin">
-    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/pull/536" target="_blank" rel="noopener" aria-label="Feature/auth improvements 보기"></a>
-    <div class="pr-status open">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">Feature/auth improvements</span>
-        <span class="item-id">#536</span>
-        <span class="label label-feat">feat</span><span class="label label-security">security</span>
-        <span class="badge review">Review 대기</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-for-clinics-admin</span>
-        <span class="sep">·</span><span class="branch-arrow">feature/auth-improvements<span class="arrow">→</span>develop</span>
-        
-        
-        <span class="sep">·</span>
-        <span>14:58 KST</span>
-      </div>
-      
-      <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[ ] 상태 관리 변경</li>
-      </ul>
-      
-      
-      <div class="item-meta-row">
-        
-        <span class="diffstat">
-          <span class="add">+26</span>
-          <span class="del">−18</span>
-          <span class="files">4 files</span>
-        </span>
-        
-        
-        
-      </div>
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c3" href="https://github.com/jisunipark" target="_blank" rel="noopener" title="@jisunipark">
-        <img src="https://avatars.githubusercontent.com/u/148641571?v=4" alt="jisunipark" loading="lazy">
       </a>
     </div>
   </div>
@@ -1239,10 +1273,6 @@
         <span>6일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>[x] 문서만 추가 — 코드 / 인프라 변경 없음</li><li>[x] JSON 검증 (audit 결과 데이터 출처: CloudWatch Logs Insights)</li>
-      </ul>
-      
       
       <div class="item-meta-row">
         
@@ -1470,7 +1500,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[ ] 상태 관리 변경</li>
+        <li>Electron IPC 호출 안전성 향상 및 이벤트 구독 패턴 변경</li><li>Sentry 연동 강화(Replay, 에러 샘플링, 자동화)</li><li>라우트 에러 fallback 분리 및 ErrorBoundary 복원력 개선</li>
       </ul>
       
       
@@ -1516,7 +1546,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[ ] 상태 관리 변경</li>
+        <li>Sentry 트리아지 에이전트 정의:</li><li>Sentry tesser-inc org의 prod 프로젝트(admin-prod, survey-prod, client, gui-application)만을 화이트리스트로 지정하여 30분 주기로 신규 이슈를 자동 탐지/분석/요약합니다.</li><li>dev 프로젝트/이벤트는 탐지 및 트리아지 전 과정에서 완전 배제하여 노이즈 및 불필요한 Jira 티켓 생성을 방지합니다.</li>
       </ul>
       
       
@@ -1562,7 +1592,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[x] 상태 관리 변경</li>
+        <li>Checkly 모니터링 시나리오 구조 개선 및 경로 추가/분리</li><li>prod 전용 Slack 알림 연동(2회 연속 실패 시만 발화)</li><li>골든패스(로그인, 주요 라우트, 계정 관리) 시나리오 추가 및 브라우저 테스트 코드 도입</li>
       </ul>
       
       
@@ -1608,7 +1638,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[x] API 연동</li><li>[ ] 상태 관리 변경</li>
+        <li>Replay 마스킹: 개인 정보 보호 강화를 위해 Sentry Replay에 텍스트/입력값 모두 마스킹(maskAllText/Inputs: true)</li><li>샘플링/환경 설정:</li><li>운영 환경에서 traces는 5%, 에러 리플레이는 100%만 활성화, 일반 리플레이는 0%</li>
       </ul>
       
       
@@ -1700,7 +1730,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[ ] 상태 관리 변경</li>
+        <li>PR 위험 패턴 자동 감지 워크플로 도입(GitHub Actions)</li><li>위험 패턴 룰북 및 시스템 프롬프트 정의 파일 추가</li><li>GitHub Actions 워크플로(.github/workflows/pr-review.yml)를 추가하여, 특정 변경파일(예: clinics 앱 코드, 배포 워크플로 등) PR 발생 시 자동으로 위험 패턴 감지 및 코멘트가 등록됩니다.</li>
       </ul>
       
       
@@ -1792,7 +1822,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>GitHub Actions 워크플로우 추가: Blue/Green 배포 시 Gateway↔Microservice 크로스 버전 호환성 자동 검증</li><li>로컬 실행 스크립트 (scripts/cross-version-e2e.sh) 및 리포트 생성 스크립트 추가</li><li>[ ] scripts/cross-version-e2e.sh 로컬 실행 검증</li>
+        <li>GitHub Actions 워크플로우 추가: Blue/Green 배포 시 Gateway↔Microservice 크로스 버전 호환성 자동 검증</li><li>로컬 실행 스크립트 (scripts/cross-version-e2e.sh) 및 리포트 생성 스크립트 추가</li>
       </ul>
       
       
@@ -1929,10 +1959,6 @@
         <span>71일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>Stainless preview build test - same content, english branch name</li>
-      </ul>
-      
       
       <div class="item-meta-row">
         
@@ -1976,7 +2002,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[x] 상태 관리 변경</li>
+        <li>병원 전용 앱(NE, CMCV) 삭제 및 공통 구조로 통합</li><li>localStorage 키 네임스페이스화로 충돌 방지</li><li>신규 CMCV 수검자 페이지 지원</li>
       </ul>
       
       
@@ -2022,7 +2048,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>[ ] UI 컴포넌트 추가/수정</li><li>[ ] API 연동</li><li>[x] 상태 관리 변경</li>
+        <li>배포 시점의 빌드 해시 및 시간 정보가 포함된 version.json 파일 자동 생성 및 S3에 함께 배포</li><li>클라이언트에서 version.json을 비교하여 자동 버전 체크 및 필요 시 리로드 처리</li><li>Vite 플러그인 및 코드 내 build hash 주입</li>
       </ul>
       
       
@@ -2068,7 +2094,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>PR 제목: OFCR-202 모듈별 README 문서 추가</li><li>작업 브랜치: OFCR-202-Document-SMC</li><li>새로운 README 문서들이 추가되어 각각의 모듈에 대한 설명이 포함되었습니다.</li>
+        <li>새로운 README 문서들이 추가되어 각각의 모듈에 대한 설명이 포함되었습니다.</li><li>기존에 존재하던 README 문서들이 수정되어 구조와 내용이 보강되었습니다.</li><li>A	src/module/hospital/examine-result-persistence-service/README.md</li>
       </ul>
       
       
@@ -2114,7 +2140,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>PR 제목: OFCSS docs: 인수인계 모듈 README 추가</li><li>작업 브랜치: OFCSS-192-be-리포트-관련-프로젝트-인수인계</li><li>: 검사 모듈에 대한 정보 추가</li>
+        <li>: 검사 모듈에 대한 정보 추가</li><li>: 파일 핸들러 PDF 관련 설명 추가</li><li>: 해석 모듈에 대한 설명 추가</li>
       </ul>
       
       
@@ -2160,7 +2186,7 @@
       </div>
       
       <ul class="item-bullets">
-        <li>PR 제목: OFCSS-315 fix: gin 인덱스 제거 검진 장소 필드 설정</li><li>작업 브랜치: OFCSS-315-be-검진-목록-검진-장소-필드-추가</li><li>검진 결과 엔티티에서 gin 인덱스를 제거하여 데이터 처리 성능을 개선</li>
+        <li>검진 결과 엔티티에서 gin 인덱스를 제거하여 데이터 처리 성능을 개선</li><li>검진 결과 서비스와 관련된 코드에서 검진 장소 필드를 추가 및 설정하여 데이터의 정확성을 높임</li><li>데이터베이스 마이그레이션 파일에서 인덱스 제거와 관련된 주의 깊은 리뷰가 필요합니다.</li>
       </ul>
       
       
@@ -2191,7 +2217,7 @@
   
 
   <div class="footer">
-    오늘의 작업 · 매일 09:00 KST 자동 갱신 · 마지막 빌드: 2026-05-26 15:53 KST
+    오늘의 작업 · 매일 매일 10:05 KST 자동 갱신 · 마지막 빌드: 2026-05-26 16:22 KST
   </div>
 </div>
 
