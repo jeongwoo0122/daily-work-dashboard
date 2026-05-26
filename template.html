@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ ctx.title }} — {{ ctx.date_iso }}</title>
+<style>
+  :root {
+    --bg: #eaeef2;
+    --surface: #ffffff;
+    --surface-2: #f6f8fa;
+    --surface-3: #eaeef2;
+    --text: #1f2328;
+    --text-muted: #59636e;
+    --text-subtle: #818b98;
+    --border: #d1d9e0;
+    --accent: #0969da;
+    --accent-bg: #ddf4ff;
+    --accent-border: #54aeff66;
+    --open: #1a7f37;
+    --open-bg: #dafbe1;
+    --open-border: #4ac26b66;
+    --merged: #8250df;
+    --merged-bg: #fbefff;
+    --merged-border: #c297ff66;
+    --draft: #59636e;
+    --draft-bg: #eff2f5;
+    --draft-border: #d1d9e0;
+    --warning: #9a6700;
+    --warning-bg: #fff8c5;
+    --closed: #cf222e;
+    --closed-bg: #ffebe9;
+    --closed-border: #ff818266;
+    --orange: #bc4c00;
+    --orange-bg: #fff1e5;
+    --orange-border: #fd8c7333;
+    --pink: #bf3989;
+    --pink-bg: #ffeff7;
+    --pink-border: #ff80b466;
+    --teal: #1b7c83;
+    --teal-bg: #ddf4ff;
+    --teal-border: #54aeff66;
+    --shadow-sm: 0 1px 0 rgba(31, 35, 40, 0.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #010409;
+      --surface: #0d1117;
+      --surface-2: #151b23;
+      --surface-3: #212830;
+      --text: #f0f6fc;
+      --text-muted: #9198a1;
+      --text-subtle: #7d8590;
+      --border: #3d444d;
+      --accent: #4493f8;
+      --accent-bg: #388bfd1a;
+      --accent-border: #4493f866;
+      --open: #3fb950;
+      --open-bg: #2ea04326;
+      --open-border: #3fb95066;
+      --merged: #ab7df8;
+      --merged-bg: #ab7df826;
+      --merged-border: #ab7df866;
+      --draft: #9198a1;
+      --draft-bg: #6e768133;
+      --draft-border: #3d444d;
+      --warning: #d29922;
+      --warning-bg: #bb800926;
+      --closed: #f85149;
+      --closed-bg: #da363326;
+      --closed-border: #f8514966;
+      --orange: #f0883e;
+      --orange-bg: #f0883e1a;
+      --orange-border: #f0883e66;
+      --pink: #db61a2;
+      --pink-bg: #db61a21a;
+      --pink-border: #db61a266;
+      --teal: #39c5cf;
+      --teal-bg: #39c5cf1a;
+      --teal-border: #39c5cf66;
+      --shadow-sm: 0 0 transparent;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 28px 20px 48px; }
+  .page-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .page-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .page-title-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-muted); box-shadow: var(--shadow-sm); }
+  .page-title-icon svg { width: 18px; height: 18px; }
+  .page-title { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+  .date-pill { display: inline-flex; align-items: center; gap: 6px; background: var(--surface); border: 1px solid var(--border); padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; color: var(--text-muted); box-shadow: var(--shadow-sm); }
+  .date-pill svg { width: 12px; height: 12px; }
+  .repos-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; color: var(--text-muted); font-size: 13px; }
+  .repo-chip { display: inline-block; background: var(--surface); border: 1px solid var(--border); padding: 3px 10px; border-radius: 6px; font-size: 12px; color: var(--text); font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; box-shadow: var(--shadow-sm); }
+  .refresh-info { color: var(--text-subtle); font-size: 12px; display: flex; align-items: center; gap: 6px; padding-top: 4px; }
+  .dot-live { width: 7px; height: 7px; background: var(--open); border-radius: 50%; box-shadow: 0 0 0 3px var(--open-bg); }
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
+  .filter-label { font-size: 12px; color: var(--text-subtle); margin-right: 4px; font-weight: 500; }
+  .chip { background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.12s ease; box-shadow: var(--shadow-sm); user-select: none; }
+  .chip:hover { background: var(--surface-2); color: var(--text); }
+  .chip.active { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); }
+  .section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 14px; overflow: hidden; box-shadow: var(--shadow-sm); }
+  .section-head { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+  .section-icon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; }
+  .section-icon.deploy { background: var(--merged); }
+  .section-icon.merged { background: var(--open); }
+  .section-icon.open { background: var(--warning); }
+  .section-icon svg { width: 14px; height: 14px; }
+  .section-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .section-count { background: var(--surface-3); color: var(--text-muted); padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .section-hint { color: var(--text-subtle); font-size: 12px; margin-left: auto; }
+  .section-empty { padding: 24px; text-align: center; color: var(--text-subtle); font-size: 13px; }
+  .item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 14px;
+    padding: 16px 18px;
+    border-top: 1px solid var(--border);
+    transition: background 0.12s ease;
+    align-items: start;
+  }
+  .item:first-of-type { border-top: none; }
+  .item:hover { background: var(--surface-2); }
+  .item-link { position: absolute; inset: 0; z-index: 0; border-radius: inherit; }
+  .item-link:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 8px; }
+  .item > *:not(.item-link) { position: relative; z-index: 1; }
+  .item-title-row, .item-subline, .item-bullets, .item-meta-row { pointer-events: none; }
+  .item a, .item .label, .item .commit-sha, .item .diffstat, .item .linear-link { pointer-events: auto; }
+  .pr-status { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .pr-status svg { width: 18px; height: 18px; }
+  .pr-status.open { color: var(--open); }
+  .pr-status.merged { color: var(--merged); }
+  .pr-status.draft { color: var(--draft); }
+  .pr-status.deploy { color: var(--merged); }
+  .item-body { min-width: 0; }
+  .item-title-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+  .item-title { font-size: 16px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; line-height: 1.35; }
+  .item-id { color: var(--text-subtle); font-size: 13px; font-weight: 500; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; }
+  .item-subline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--text-subtle); margin-bottom: 12px; }
+  .item-subline .repo-name { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; font-size: 11px; color: var(--text-muted); }
+  .item-subline .branch-arrow { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; font-size: 11px; color: var(--text-muted); }
+  .item-subline .branch-arrow .arrow { color: var(--text-subtle); padding: 0 2px; }
+  .item-subline .sep { color: var(--border); }
+  .item-subline .commit-sha { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; color: var(--text-muted); font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); padding: 1px 6px; border-radius: 4px; }
+  .item-bullets { margin: 0 0 12px; padding: 0; list-style: none; }
+  .item-bullets li { font-size: 13px; line-height: 1.7; color: var(--text); padding-left: 14px; position: relative; }
+  .item-bullets li::before { content: "·"; position: absolute; left: 4px; top: -1px; color: var(--text-subtle); font-weight: 700; font-size: 14px; }
+  .item-bullets:last-child { margin-bottom: 0; }
+  .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; padding: 1px 8px; border-radius: 20px; font-weight: 500; line-height: 1.6; border: 1px solid transparent; }
+  .badge.draft    { background: var(--draft-bg);   color: var(--draft);   border-color: var(--draft-border); }
+  .badge.review   { background: var(--accent-bg);  color: var(--accent);  border-color: var(--accent-border); }
+  .badge.prod     { background: var(--merged-bg);  color: var(--merged);  border-color: var(--merged-border); }
+  .badge.staging  { background: var(--accent-bg);  color: var(--accent);  border-color: var(--accent-border); }
+  .badge.failure  { background: var(--closed-bg);  color: var(--closed);  border-color: var(--closed-border); }
+  .label { display: inline-flex; align-items: center; font-size: 11px; padding: 1px 8px; border-radius: 4px; font-weight: 500; line-height: 1.6; border: 1px solid; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; }
+  .label-feat     { color: var(--open);    border-color: var(--open-border);    background: var(--open-bg); }
+  .label-fix      { color: var(--closed);  border-color: var(--closed-border);  background: var(--closed-bg); }
+  .label-chore    { color: var(--text-muted); border-color: var(--border);      background: var(--surface-2); }
+  .label-refactor { color: var(--merged);  border-color: var(--merged-border);  background: var(--merged-bg); }
+  .label-perf     { color: var(--orange);  border-color: var(--orange-border);  background: var(--orange-bg); }
+  .label-design   { color: var(--pink);    border-color: var(--pink-border);    background: var(--pink-bg); }
+  .label-i18n     { color: var(--accent);  border-color: var(--accent-border);  background: var(--accent-bg); }
+  .label-security { color: var(--closed);  border-color: var(--closed-border);  background: var(--closed-bg); }
+  .label-infra    { color: var(--teal);    border-color: var(--teal-border);    background: var(--teal-bg); }
+  .label-polish   { color: var(--text-muted); border-color: var(--border);      background: var(--surface-2); }
+  .label-release  { color: var(--merged);  border-color: var(--merged-border);  background: var(--merged-bg); }
+  .item-meta-row { display: flex; align-items: center; gap: 10px; color: var(--text-subtle); font-size: 11px; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid var(--border); }
+  .item-meta-row .sep { color: var(--border); }
+  .diffstat { display: inline-flex; align-items: center; gap: 6px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; font-size: 11px; }
+  .diffstat .add { color: var(--open); font-weight: 600; }
+  .diffstat .del { color: var(--closed); font-weight: 600; }
+  .diffstat .files { color: var(--text-subtle); }
+  a.linear-link { background: transparent; color: var(--accent); border: 1px solid var(--accent-border); padding: 1px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; font-size: 11px; font-weight: 600; text-decoration: none; }
+  a.linear-link:hover { background: var(--accent-bg); }
+  .linear-pending { color: var(--text-subtle); font-style: italic; font-size: 11px; }
+  .item-author-col { display: flex; align-items: flex-start; padding-top: 2px; }
+  .item-author { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: transparent; border: 1.5px solid; font-size: 12px; font-weight: 700; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, "Pretendard", system-ui, sans-serif; transition: transform 0.12s ease, background 0.12s ease; overflow: hidden; }
+  .item-author:hover { background: var(--surface-2); transform: scale(1.06); }
+  .item-author img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .av-c0 { color: #0969da; border-color: #0969da; }
+  .av-c1 { color: #cf222e; border-color: #cf222e; }
+  .av-c2 { color: #1a7f37; border-color: #1a7f37; }
+  .av-c3 { color: #8250df; border-color: #8250df; }
+  .av-c4 { color: #bc4c00; border-color: #bc4c00; }
+  .av-c5 { color: #bf3989; border-color: #bf3989; }
+  .av-c6 { color: #1b7c83; border-color: #1b7c83; }
+  @media (prefers-color-scheme: dark) {
+    .av-c0 { color: #58a6ff; border-color: #58a6ff; }
+    .av-c1 { color: #f85149; border-color: #f85149; }
+    .av-c2 { color: #3fb950; border-color: #3fb950; }
+    .av-c3 { color: #ab7df8; border-color: #ab7df8; }
+    .av-c4 { color: #f0883e; border-color: #f0883e; }
+    .av-c5 { color: #db61a2; border-color: #db61a2; }
+    .av-c6 { color: #39c5cf; border-color: #39c5cf; }
+  }
+  .more-toggle { border-top: 1px solid var(--border); }
+  .more-toggle summary { list-style: none; cursor: pointer; padding: 12px 16px; color: var(--text-muted); font-size: 13px; text-align: center; user-select: none; transition: background 0.12s ease; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 500; }
+  .more-toggle summary::-webkit-details-marker { display: none; }
+  .more-toggle summary:hover { background: var(--surface-2); color: var(--text); }
+  .more-toggle summary svg { width: 12px; height: 12px; }
+  .more-toggle[open] summary { display: none; }
+  .footer { color: var(--text-subtle); font-size: 12px; text-align: center; padding: 24px 0 4px; }
+  .footer a { color: var(--text-subtle); text-decoration: none; }
+  .footer a:hover { color: var(--accent); text-decoration: underline; }
+  @media (max-width: 600px) {
+    .wrap { padding: 16px 14px 32px; }
+    .item { padding: 14px 14px; gap: 10px; grid-template-columns: 22px 1fr auto; }
+    .pr-status { width: 20px; height: 20px; }
+    .pr-status svg { width: 16px; height: 16px; }
+    .item-author { width: 26px; height: 26px; font-size: 11px; }
+  }
+  .hidden-by-filter { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-header">
+    <div>
+      <div class="page-title-row">
+        <div class="page-title-icon">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
+        </div>
+        <h1 class="page-title">{{ ctx.title }}</h1>
+        <span class="date-pill">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4.75 0a.75.75 0 0 1 .75.75V2h5V.75a.75.75 0 0 1 1.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V3.75C1 2.784 1.784 2 2.75 2H4V.75A.75.75 0 0 1 4.75 0ZM2.5 7.5v6.75c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V7.5Zm10.75-4H2.75a.25.25 0 0 0-.25.25V6h11V3.75a.25.25 0 0 0-.25-.25Z"/></svg>
+          {{ ctx.date_display }}
+        </span>
+      </div>
+      <div class="repos-row">
+        {% for repo in ctx.repos %}<span class="repo-chip">{{ repo }}</span>{% endfor %}
+      </div>
+    </div>
+    <div class="refresh-info">
+      <span class="dot-live"></span> {{ ctx.refresh_display }}
+    </div>
+  </div>
+  <div class="filters">
+    <span class="filter-label">Repo</span>
+    <span class="chip active" data-repo="*">All</span>
+    {% for repo in ctx.repos %}<span class="chip" data-repo="{{ repo }}">{{ repo }}</span>{% endfor %}
+  </div>
+
+  {% macro render_item(item) %}
+  <div class="item" data-repo="{{ item.repo_name }}">
+    <a class="item-link" href="{{ item.url }}" target="_blank" rel="noopener" aria-label="{{ item.title }} 보기"></a>
+    <div class="pr-status {{ item.status_class }}">
+      {{ item.status_svg|safe }}
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">{{ item.title }}</span>
+        {% if item.id_display %}<span class="item-id">{{ item.id_display }}</span>{% endif %}
+        {% for lbl in item.labels %}<span class="label label-{{ lbl }}">{{ lbl }}</span>{% endfor %}
+        {% if item.badge %}<span class="badge {{ item.badge.cls }}">{{ item.badge.text }}</span>{% endif %}
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">{{ item.repo_name }}</span>
+        {% if item.branch_arrow %}<span class="sep">·</span><span class="branch-arrow">{{ item.branch_arrow.head }}<span class="arrow">→</span>{{ item.branch_arrow.base }}</span>{% endif %}
+        {% if item.commit_sha %}<span class="sep">·</span><span class="commit-sha">{{ item.commit_sha }}</span>{% endif %}
+        {% if item.extra_subline %}<span class="sep">·</span><span>{{ item.extra_subline }}</span>{% endif %}
+        <span class="sep">·</span>
+        <span>{{ item.time_display }}</span>
+      </div>
+      {% if item.bullets %}
+      <ul class="item-bullets">
+        {% for b in item.bullets %}<li>{{ b }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if item.show_meta_row %}
+      <div class="item-meta-row">
+        {% if item.diffstat %}
+        <span class="diffstat">
+          <span class="add">+{{ item.diffstat.add }}</span>
+          <span class="del">−{{ item.diffstat.del }}</span>
+          <span class="files">{{ item.diffstat.files }} files</span>
+        </span>
+        {% endif %}
+        {% if item.diffstat and item.linear %}<span class="sep">·</span>{% endif %}
+        {% if item.linear %}<a class="linear-link" href="{{ item.linear.url }}" target="_blank" rel="noopener">{{ item.linear.id }}</a>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c{{ item.author.color_idx }}" href="{{ item.author.profile_url }}" target="_blank" rel="noopener" title="@{{ item.author.handle }}">
+        {% if item.author.avatar_url %}<img src="{{ item.author.avatar_url }}" alt="{{ item.author.handle }}" loading="lazy">{% else %}{{ item.author.initial }}{% endif %}
+      </a>
+    </div>
+  </div>
+  {% endmacro %}
+
+  {% if ctx.sections.deployed %}
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon deploy">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M14.064 0h.186C15.216 0 16 .784 16 1.75v.186a8.752 8.752 0 0 1-2.564 6.186l-.458.459c-.314.314-.641.616-.979.904v3.207c0 .608-.315 1.172-.833 1.49l-2.774 1.707a.749.749 0 0 1-1.11-.418l-.954-3.102a1.214 1.214 0 0 1-.145-.125L3.754 9.816a1.218 1.218 0 0 1-.124-.145L.528 8.717a.749.749 0 0 1-.418-1.11l1.71-2.774A1.748 1.748 0 0 1 3.31 4h3.204c.288-.338.59-.665.904-.979l.459-.458A8.749 8.749 0 0 1 14.064 0ZM8.938 3.623h-.002l-.458.458c-.76.76-1.437 1.598-2.02 2.5l-1.5 2.317 2.143 2.143 2.317-1.5c.902-.583 1.74-1.26 2.499-2.02l.459-.458a7.25 7.25 0 0 0 2.123-5.127V1.75a.25.25 0 0 0-.25-.25h-.186a7.249 7.249 0 0 0-5.125 2.123ZM3.56 14.56c-.732.732-2.334 1.045-3.005 1.148a.234.234 0 0 1-.201-.064.234.234 0 0 1-.064-.201c.103-.671.416-2.273 1.15-3.003a1.502 1.502 0 1 1 2.12 2.12Zm6.94-3.935c-.088.06-.177.118-.266.175l-2.35 1.521.548 1.783 1.949-1.2a.25.25 0 0 0 .119-.213ZM3.678 8.116 5.2 5.766c.058-.09.117-.178.176-.266H3.309a.25.25 0 0 0-.213.119l-1.2 1.95ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+      </div>
+      <div class="section-title">오늘 배포됨</div>
+      <span class="section-count">{{ ctx.deployed|length }}</span>
+      <div class="section-hint">실제 사용자에게 반영된 변경</div>
+    </div>
+    {% if ctx.deployed %}
+      {% for item in ctx.deployed %}{{ render_item(item) }}{% endfor %}
+    {% else %}
+      <div class="section-empty">오늘 배포된 항목이 없습니다.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if ctx.sections.merged %}
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon merged">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005Z"/></svg>
+      </div>
+      <div class="section-title">오늘 머지됨</div>
+      <span class="section-count">{{ ctx.merged|length }}</span>
+      <div class="section-hint">완료 — 다음 배포에 포함</div>
+    </div>
+    {% if ctx.merged %}
+      {% for item in ctx.merged %}{{ render_item(item) }}{% endfor %}
+    {% else %}
+      <div class="section-empty">오늘 머지된 PR이 없습니다.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if ctx.sections.open %}
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon open">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
+      </div>
+      <div class="section-title">진행 중</div>
+      <span class="section-count">{{ ctx.open_total }}</span>
+      <div class="section-hint">리뷰 대기 또는 작성 중</div>
+    </div>
+    {% if ctx.open_visible %}
+      {% for item in ctx.open_visible %}{{ render_item(item) }}{% endfor %}
+      {% if ctx.open_hidden %}
+        <details class="more-toggle">
+          <summary>
+            그 외 {{ ctx.open_hidden|length }}건 더 보기
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.78 6.22a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L3.22 7.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L8 9.94l3.72-3.72a.75.75 0 0 1 1.06 0Z"/></svg>
+          </summary>
+          {% for item in ctx.open_hidden %}{{ render_item(item) }}{% endfor %}
+        </details>
+      {% endif %}
+    {% else %}
+      <div class="section-empty">현재 열려 있는 PR이 없습니다.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="footer">
+    {{ ctx.title }} · 매일 {{ ctx.cron_display }} 자동 갱신 · 마지막 빌드: {{ ctx.built_at_display }}
+  </div>
+</div>
+
+<script>
+  // Repo 필터 칩
+  (function(){
+    var chips = document.querySelectorAll('.filters .chip');
+    var items = document.querySelectorAll('.item[data-repo]');
+    chips.forEach(function(chip){
+      chip.addEventListener('click', function(){
+        chips.forEach(function(c){ c.classList.remove('active'); });
+        chip.classList.add('active');
+        var target = chip.getAttribute('data-repo');
+        items.forEach(function(it){
+          if (target === '*' || it.getAttribute('data-repo') === target) {
+            it.classList.remove('hidden-by-filter');
+          } else {
+            it.classList.add('hidden-by-filter');
+          }
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

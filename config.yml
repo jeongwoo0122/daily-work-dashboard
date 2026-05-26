@@ -1,0 +1,54 @@
+# 오늘의 작업 대시보드 설정
+# build.py가 이 파일을 읽어 데이터를 수집합니다.
+
+# 추적할 GitHub 저장소 목록 (owner/repo)
+# 필요한 만큼 추가/제거하세요.
+repos:
+  - Tesser/ontol-for-clinics-admin
+  - Tesser/ontol-clinics-backend
+  - Tesser/ontol-clinic-be-server-smc
+  - Tesser/ontol-for-clinics-gui-application
+  - Tesser/ontol-for-clinics-client
+  - Tesser/ontol-for-clinics-user-story
+
+# 페이지 표시 설정
+display:
+  title: "오늘의 작업"
+  timezone: "Asia/Seoul"
+  # GitHub Pages 공개 URL (배포 후 채워 넣으세요. README 참고)
+  # Slack 메시지의 "전체 대시보드 보기 →" 링크에 사용됩니다.
+  public_url: "https://tesser.github.io/daily-work-dashboard/"
+
+# 섹션 노출 여부
+sections:
+  deployed: true   # 오늘 배포됨 (성공한 deploy/release 워크플로우 run)
+  merged: true     # 오늘 머지됨 (closed PR with merged_at == today)
+  open: true       # 진행 중 (open PR)
+
+# "오늘 배포됨" 섹션에서 deploy로 인식할 워크플로우 이름 필터
+# 워크플로우 이름에 아래 키워드가 포함되면 deploy로 판정합니다.
+deploy_workflow_keywords:
+  - deploy
+  - release
+  - publish
+  - cd
+  - production
+  - staging
+
+# "진행 중" 섹션에서 최대로 보여줄 PR 개수
+# 그 이상은 <details> 접힘으로 표시됩니다.
+open_visible: 4
+
+# 분류 라벨 자동 추론 키워드 (제목/브랜치 기준)
+# 일치하지 않으면 라벨이 표시되지 않습니다.
+label_keywords:
+  feat:     ["feat", "feature", "add "]
+  fix:      ["fix", "bugfix", "hotfix"]
+  chore:    ["chore", "bump", "deps", "dependency"]
+  refactor: ["refactor"]
+  perf:     ["perf", "performance", "optimize"]
+  design:   ["design", "ui ", "ux "]
+  i18n:     ["i18n", "translation", "locale"]
+  security: ["security", "auth", "cve"]
+  infra:    ["infra", "ci ", "cd ", "terraform", "k8s"]
+  polish:   ["polish"]
