@@ -15,9 +15,8 @@ repos:
 display:
   title: "오늘의 작업"
   timezone: "Asia/Seoul"
-  # GitHub Pages 공개 URL (배포 후 채워 넣으세요. README 참고)
-  # Slack 메시지의 "전체 대시보드 보기 →" 링크에 사용됩니다.
-  public_url: "https://tesser.github.io/daily-work-dashboard/"
+  # GitHub Pages 공개 URL
+  public_url: "https://jeongwoo0122.github.io/daily-work-dashboard/"
 
 # 섹션 노출 여부
 sections:
