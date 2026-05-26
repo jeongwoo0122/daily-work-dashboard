@@ -240,7 +240,7 @@
         </span>
       </div>
       <div class="repos-row">
-        <span class="repo-chip">ontol-for-clinics-admin</span><span class="repo-chip">ontol-clinics-backend</span><span class="repo-chip">ontol-clinic-be-server-smc</span><span class="repo-chip">ontol-for-clinics-gui-application</span><span class="repo-chip">ontol-for-clinics-client</span><span class="repo-chip">ontol-for-clinics-user-story</span>
+        <span class="repo-chip">ontol-for-clinics-admin</span><span class="repo-chip">ontol-clinics-backend</span><span class="repo-chip">ontol-for-clinics-gui-application</span>
       </div>
     </div>
     <div class="refresh-info">
@@ -250,7 +250,7 @@
   <div class="filters">
     <span class="filter-label">Repo</span>
     <span class="chip active" data-repo="*">All</span>
-    <span class="chip" data-repo="ontol-for-clinics-admin">ontol-for-clinics-admin</span><span class="chip" data-repo="ontol-clinics-backend">ontol-clinics-backend</span><span class="chip" data-repo="ontol-clinic-be-server-smc">ontol-clinic-be-server-smc</span><span class="chip" data-repo="ontol-for-clinics-gui-application">ontol-for-clinics-gui-application</span><span class="chip" data-repo="ontol-for-clinics-client">ontol-for-clinics-client</span><span class="chip" data-repo="ontol-for-clinics-user-story">ontol-for-clinics-user-story</span>
+    <span class="chip" data-repo="ontol-for-clinics-admin">ontol-for-clinics-admin</span><span class="chip" data-repo="ontol-clinics-backend">ontol-clinics-backend</span><span class="chip" data-repo="ontol-for-clinics-gui-application">ontol-for-clinics-gui-application</span>
   </div>
 
   
@@ -676,11 +676,57 @@
     <div class="section-head">
       <div class="section-icon merged"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005Z"/></svg></div>
       <div class="section-title">오늘 머지됨</div>
-      <span class="section-count">5</span>
+      <span class="section-count">6</span>
       <div class="section-hint">완료 — 다음 배포에 포함</div>
     </div>
     
       
+  <div class="item" data-repo="ontol-clinics-backend">
+    <a class="item-link" href="https://github.com/Tesser/ontol-clinics-backend/pull/1054" target="_blank" rel="noopener" aria-label="ty-report::test: 깨진 spec 2건 동기화 (FSM rollback 정책 + usecase mock) 보기"></a>
+    <div class="pr-status merged">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005Z"/></svg>
+    </div>
+    <div class="item-body">
+      <div class="item-title-row">
+        <span class="item-title">ty-report::test: 깨진 spec 2건 동기화 (FSM rollback 정책 + usecase mock)</span>
+        <span class="item-id">#1054</span>
+        <span class="label label-fix">fix</span>
+        
+      </div>
+      <div class="item-subline">
+        <span class="repo-name">ontol-clinics-backend</span>
+        <span class="sep">·</span><span class="branch-arrow">fix/ty-report-spec-mocks<span class="arrow">→</span>develop</span>
+        
+        
+        <span class="sep">·</span>
+        <span>16:41 KST</span>
+      </div>
+      
+      <ul class="item-bullets">
+        <li>원인: ALLOWED_TRANSITIONS[DISPATCH_QUEUED] 에 REVIEWED 가 들어가 있음 — // 예약 취소 rollback: 활성 dispatch 가 사라지면 REVIEWED 로 복귀. 주석과 함께 명시적으로 의도된 정책 (apps/ty-report/backend/src/common/examinee-status.ts:64-69). cancel-scheduled-dispatch usecase 가 이를 의존.</li><li>spec 의 &#34;DISPATCH_QUEUED 이후 검수 단계로의 거꾸로 전이는 차단&#34; 케이스가 이 정책 변경을 못 따라가 두 transition 을 모두 차단 한다고 주장 → 실패.</li><li>수정: 한 케이스를 둘로 분리</li>
+      </ul>
+      
+      
+      <div class="item-meta-row">
+        
+        <span class="diffstat">
+          <span class="add">+12</span>
+          <span class="del">−3</span>
+          <span class="files">2 files</span>
+        </span>
+        
+        
+        
+      </div>
+      
+    </div>
+    <div class="item-author-col">
+      <a class="item-author av-c2" href="https://github.com/ocean25511" target="_blank" rel="noopener" title="@ocean25511">
+        <img src="https://avatars.githubusercontent.com/u/245784607?v=4" alt="ocean25511" loading="lazy">
+      </a>
+    </div>
+  </div>
+  
   <div class="item" data-repo="ontol-for-clinics-admin">
     <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-admin/pull/536" target="_blank" rel="noopener" aria-label="Feature/auth improvements 보기"></a>
     <div class="pr-status merged">
@@ -702,9 +748,7 @@
         <span>16:15 KST</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>로그아웃 동작이 SPA 내의 네비게이션에서 하드 리로드(window.location.replace)로 변경되었습니다. 이로써 로그아웃 처리 중 race condition 및 인증 만료 후 일시적으로 잘못된 상태가 발생하는 문제를 방지할 수 있습니다.</li><li>회원가입 시 초대 수락 후 리디렉션 경로가 로그인 화면에서 &#39;초대 완료&#39; 전용 화면으로 변경되어, 보다 명확한 플로우를 제공합니다.</li><li>인증 레이아웃의 padding, gap, 스크롤 처리를 개선하여 반응성과 접근성을 높였습니다.</li>
-      </ul>
+      <p class="item-narrative">로그아웃 시 ErrorPage 플래시 race condition을 하드 리로드(window.location.replace)로 차단. 이미 401 인터셉터·SSE 핸들러에서 검증된 패턴과 정책 통일.</p>
       
       
       <div class="item-meta-row">
@@ -748,9 +792,7 @@
         <span>14:58 KST</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>scribe 전용 문서(rtf-diff-issue.md, scribe-regression-test-plan.md)가 루트 docs/에 있었음</li><li>SURVEY_QUESTION_TYPES.md가 feature 루트에 파일로 떠 있었음</li><li>RESULT_TABLE_MAINTENANCE_GUIDE.md처럼 SCREAMING_CASE 파일명이 혼재</li>
-      </ul>
+      <p class="item-narrative">흩어진 문서 위치 규칙을 &#39;코드 옆 배치&#39;로 정리. scribe 문서를 features/scribe/docs로 이동하고 kebab-case 통일, CLAUDE.md에 위치 규칙을 명문화.</p>
       
       
       <div class="item-meta-row">
@@ -794,9 +836,7 @@
         <span>14:55 KST</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>줄바꿈 표현 일치: 종합소견 미리보기와 복사 기능 간 줄바꿈 처리 로직을 통일했습니다.</li><li>기존에는 미리보기에서 단일 \n도 단락 경계로 처리되어 복사 결과와 차이가 발생했으나,</li><li>이제 단일 \n은 &lt;br&gt;, 연속된 \n\n 이상은 &lt;p&gt;로 처리하여 시각적으로 구분되고, 복사 결과와 완전히 일치합니다.</li>
-      </ul>
+      <p class="item-narrative">종합소견 미리보기/복사 줄바꿈을 단일 \n → &lt;br&gt;, 연속 \n\n → &lt;p&gt;로 통일. 그린문 병원 헤더 누락은 정규식 대신 DOMParser 도입으로 해결.</p>
       
       
       <div class="item-meta-row">
@@ -840,9 +880,7 @@
         <span>11:10 KST</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>severity 구분 표시에 따른 영상 소견 미리보기 개선 (빈 단락, divider 시각적 보존)</li><li>Drag &amp; Drop 중 복합 소견 카드 본문에서의 raw HTML 노출 방지</li><li>RTF, plain text 경계 처리 유틸 추가(plainToDisplayHtml)</li>
-      </ul>
+      <p class="item-narrative">RTF 종합소견 미리보기에서 severity divider·빈 단락·prefix/suffix가 누락되던 렌더링 경로 보완. DnD preview 카드의 raw HTML 노출도 차단.</p>
       
       
       <div class="item-meta-row">
@@ -886,9 +924,7 @@
         <span>08:53 KST</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>InsertionCell/테이블 상호작용 UX 및 UI 개선</li><li>후보 셀·드롭 가능 영역·비강조 영역·드롭 금지 등 멀티 상태에 대해 상태별 하이라이팅/시각화 일관성 개선(디자인 QA 피드백 중심).</li><li>DnD 진행 중 드롭 가능/불가 신호 및 ‘삽입’ 강조 효과 명확화.</li>
-      </ul>
+      <p class="item-narrative">Scribe InsertionCell의 멀티 상태 하이라이팅과 DnD 신호를 정비. 복잡한 드롭 로직을 useCellDropState 등 커스텀 훅으로 분리해 가독성 강화.</p>
       
       
       <div class="item-meta-row">
@@ -922,22 +958,22 @@
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
       </div>
       <div class="section-title">진행 중</div>
-      <span class="section-count">28</span>
+      <span class="section-count">23</span>
       <div class="section-hint">리뷰 대기 또는 작성 중</div>
     </div>
     
       
   <div class="item" data-repo="ontol-clinics-backend">
     <a class="item-link" href="https://github.com/Tesser/ontol-clinics-backend/pull/1053" target="_blank" rel="noopener" aria-label="data-platform/scribe::feat: SAEROM 동기화 진단 가시성 + lock 충돌 감지 추가 보기"></a>
-    <div class="pr-status draft">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.25 1A2.25 2.25 0 0 1 4 5.372v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.251 2.251 0 0 1 3.25 1Zm9.5 14a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5ZM2.5 3.25a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0ZM3.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm9.5.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0ZM14 7.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0-3.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-3.5-2.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+    <div class="pr-status open">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
     </div>
     <div class="item-body">
       <div class="item-title-row">
         <span class="item-title">data-platform/scribe::feat: SAEROM 동기화 진단 가시성 + lock 충돌 감지 추가</span>
         <span class="item-id">#1053</span>
         <span class="label label-feat">feat</span>
-        <span class="badge draft">Draft</span>
+        <span class="badge review">Review 대기</span>
       </div>
       <div class="item-subline">
         <span class="repo-name">ontol-clinics-backend</span>
@@ -948,17 +984,15 @@
         <span>16:17 KST</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>2026-05-26 GM 2605210021 UNFINALIZE 30초 timeout 인시던트가 트리거. 슬랙 알림이 TCP request timed out after 30000ms 한 줄로 끝나 lock 충돌인지·네트워크 stall 인지·DB 부하인지 판단할 수 없었음.</li><li>cross-DB 진단 모듈 (packages/infrastructure/src/database/diagnostics) 신설, SAEROM processor 4개에 step 단위 로깅 + 구조화 에러 컨텍스트 추가, scribe slack 알림에 likelyCause / elapsedMs / Oracle·MSSQL 에러 코드 포함.</li><li>Lock-busy 에러 감지 시 (ORA-00054 / ORA-30006 / MSSQL 1222) raw driver 에러를 그대로 던지지 않고 한국어 사용자 메시지를 담은 BusinessException(CONFLICT) 으로 자동 변환.</li>
-      </ul>
+      <p class="item-narrative">GM unfinalize 30초 timeout 인시던트 대응. SAEROM processor 4개에 step 단위 로깅을 추가하고, ORA-00054·MSSQL 1222 등 lock-busy 감지 시 BusinessException(CONFLICT)로 자동 변환.</p>
       
       
       <div class="item-meta-row">
         
         <span class="diffstat">
-          <span class="add">+905</span>
-          <span class="del">−179</span>
-          <span class="files">12 files</span>
+          <span class="add">+914</span>
+          <span class="del">−182</span>
+          <span class="files">13 files</span>
         </span>
         
         
@@ -994,9 +1028,7 @@
         <span>15:08 KST</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>기타: 라우트 진입 전 인증 처리 및 설정 값 사용 시 예외 처리/타임아웃 로직 추가</li><li>인증 복원(attemptSilentRefresh)을 시도할 때 네트워크 지연이나 응답 없음 등으로 무한 대기하는 상황을 방지하기 위해 3초의 타임아웃을 도입</li><li>병원 정보(hospitalInfo) API 프리로드 실패 시 더이상 throw하지 않고, 오류 로그만 남긴 뒤 화면 진입은 그대로 진행하도록 완화 (사이드바 등은 비어있게 됨)</li>
-      </ul>
+      <p class="item-narrative">Electron 부팅 시 흰 화면 후 종료되던 문제 해결. attemptSilentRefresh에 3초 타임아웃을 두고 자동 로그아웃 임계값 0/누락 가드를 추가.</p>
       
       
       <div class="item-meta-row">
@@ -1040,9 +1072,7 @@
         <span>5일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>849 error 로그 중 834건 (98%) 이 단일 메시지 source — Agent DataSource config not found for hospital: .... 한 application bug 가 메시지에 우연히 포함된 DataSource 단어로 critical-error metric filter 에 매칭 → critical-error + error-rate 두 알람을 매일 업무시간대마다 동시 발화시키고 있었음.</li><li>진짜 SERIM 인프라 시그널 4건은 위 false positive 833건에 묻혀 같은 알람으로 떨어짐 — alert fatigue 진행 중.</li><li>bolt-01 (packages::fix): agent-database.service.ts 의 InternalServerErrorException → NotFoundException. cluster-1 의 834건/일 noise source 즉시 차단.</li>
-      </ul>
+      <p class="item-narrative">CloudWatch critical-error 알람의 source-of-truth를 메시지 패턴 추측에서 작성자 의도 선언으로 이동. OntolLogger에 severity 옵션을 추가하고 인프라 부팅 실패 4곳에 critical을 마킹.</p>
       
       
       <div class="item-meta-row">
@@ -1086,9 +1116,7 @@
         <span>5일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>정산 기준 액션(generate/summary/descriptive/translation/pdf_analysis/send/resend)의 일일 가시성이 없어 0건 병원/슬로우다운을 사후 대응하던 문제.</li><li>finding-accuracy aggregate, auto-generate trigger 두 manual endpoint 가 권한 모델(RequirePermissions vs ManagerGuard)·URL·body shape 제각각이라 추상화 가치 발생 (rule of three).</li><li>PR #862 는 사용처 1곳일 때 over-engineering 으로 close 됐으나, 3곳 적용 + Bull Board 모니터링 가치 가산으로 슬림 버전 부활.</li>
-      </ul>
+      <p class="item-narrative">@TriggerableJob 데코레이터 + SchedulerTriggerService + /admin/jobs endpoint + BullMQ 큐 인프라 도입. 첫 적용처로 data-platform 일일 사용량 슬랙 알림(매일 09:00 KST) 추가.</p>
       
       
       <div class="item-meta-row">
@@ -1114,7 +1142,7 @@
       
         <details class="more-toggle">
           <summary>
-            그 외 24건 더 보기
+            그 외 19건 더 보기
             <svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.78 6.22a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L3.22 7.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L8 9.94l3.72-3.72a.75.75 0 0 1 1.06 0Z"/></svg>
           </summary>
           
@@ -1139,9 +1167,7 @@
         <span>5일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>프로덕션 PostgreSQL 슬로우 로그(/aws/rds/cluster/ontol-scribe-v2-prod-cluster/postgresql)를 CloudWatch Logs Insights 로 가져와 테이블/JOIN 패턴별로 클러스터링하고, 이 레포의 producer 후보를 매핑해서 분석 리포트를 만드는 스킬 (/slow-query).</li><li>파싱·클러스터링·소스 매핑 로직을 모두 scripts/ 에 넣어 모델 토큰 절감. 5000건의 raw 슬로우 로그가 모델 컨텍스트로 직접 들어가지 않고, 클러스터 요약(~30줄)만 들어간다.</li><li>분석 결과는 archive/&lt;timestamp&gt;/report.md 에 체크박스 포함 markdown 으로 누적. INDEX.md 로 시계열 조회, 재 fetch 전 기존 리포트 재사용 흐름을 SKILL.md Step 0 에 의무화 — AWS Logs Insights 비용 + 모델 토큰 둘 다 절감.</li>
-      </ul>
+      <p class="item-narrative">프로덕션 PostgreSQL 슬로우 로그를 테이블/JOIN 핑거프린트로 클러스터링하고 이 레포의 producer 후보를 매핑하는 /slow-query 스킬 추가. archive 누적으로 재분석 비용 절감.</p>
       
       
       <div class="item-meta-row">
@@ -1185,9 +1211,7 @@
         <span>5일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>병원 EMR (Saerom oracle/mssql 등) 에 read-only 쿼리를 ad-hoc 실행할 수 있는 CLI 스크립트 + Claude skill 추가</li><li>MCP read_query 가 ontol agent DB 까지만 닿는 한계를 보완 — 외부 EMR(Saerom/JPKP) 디버깅·분석 시 SSH 터널 + driver 연결을 수동으로 매번 셋업하던 작업 자동화</li><li>Read-only 강제 + multi-statement 차단 + password redact 로 운영 DB 사고 가드</li>
-      </ul>
+      <p class="item-narrative">병원 EMR(Saerom Oracle/MSSQL)에 read-only ad-hoc 쿼리를 실행하는 CLI 스크립트와 Claude 스킬 추가. SELECT/WITH만 허용하고 multi-statement·write는 차단.</p>
       
       
       <div class="item-meta-row">
@@ -1231,9 +1255,7 @@
         <span>6일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>신규 EMR 업체에 전달할 API 스펙을 OpenAPI 3.0 YAML 로 작성 (markdown → 표준 스펙)</li><li>우리 ETL 이 적재하는 17개 entity 전체를 schema 로 명세 (1차/2차 문진 + 정신건강 + 상담정보 + 상담메모 + 일반검진 소견/판정 등)</li><li>외부 개발자용 field guide 별도 작성 — DB 컬럼 매핑 대신 비즈니스 의미 + real data 예시 중심</li>
-      </ul>
+      <p class="item-narrative">신규 EMR 업체에 전달할 API 스펙을 OpenAPI 3.0 YAML로 작성. 적재 대상 17개 entity schema, 9개 enum, write-back endpoint 3개 정의 + 외부 개발자용 field guide 별도 작성.</p>
       
       
       <div class="item-meta-row">
@@ -1277,6 +1299,8 @@
         <span>6일 전 열림</span>
       </div>
       
+      <p class="item-narrative">USE_READER_FOR_READ_QUERY 활성화 보류 결정 후 30일 audit 결과 문서화. read_query 도구가 12개 병원에서 195건의 complex 마스터 데이터 write에 사용 중인 사실 발견.</p>
+      
       
       <div class="item-meta-row">
         
@@ -1319,9 +1343,7 @@
         <span>7일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>Then step 4개 신규: count / severity 필드 / targetComplexCode / oldSnapshot.complex.code</li><li>기존 시나리오 보강: FEEDBACK-1/2/3, ORDER-1/2, FEEDBACK-E2</li><li>신규 시나리오 2개: SEVERITY-1, MULTI-1</li>
-      </ul>
+      <p class="item-narrative">ScribeEditHistory의 5종 actionType(ADDED/DELETED/MODIFIED/SEVERITY/ORDER) 분류와 snapshot·complexCode 전달을 검증하는 E2E 9 시나리오 추가. 후속 Builder 추출 PR의 안전망 역할.</p>
       
       
       <div class="item-meta-row">
@@ -1365,9 +1387,7 @@
         <span>7일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>FeedbackScribeUsecase 의 거대 메서드 recordDetailedEditHistory (120줄) 를 새 Component 로 추출. 피드백 5종 분류(ADDED/DELETED/MODIFIED/SEVERITY/ORDER) + snapshot 변환을 FeedbackEditHistoryBuilderComponent 로 이동.</li><li>Usecase 의 흐름 조합 책임 회복 — recordDetailedEditHistory 가 120줄 → 8줄. Builder 호출 + changes/hasOrderChange 분기에 따라 DS 호출만 남김.</li><li>Unit test 폭발적으로 쉬워짐 — Builder 는 순수 함수 (DB 접근 0, side-effect 0). DI 의존성 14개 없이 new 로 직접 테스트. Spec 15개 신규 추가.</li>
-      </ul>
+      <p class="item-narrative">FeedbackScribeUsecase의 120줄 recordDetailedEditHistory를 FeedbackEditHistoryBuilderComponent로 추출. usecase는 8줄로 축소되고 순수 함수 spec 15건 신규 추가.</p>
       
       
       <div class="item-meta-row">
@@ -1411,9 +1431,7 @@
         <span>7일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>refactor-bc-enforcement spec Phase 1.5 (E-8) 완료. ESLint 가 못 잡는 그래프 구조 위반 (cycle / cross-BC cycle / layer / orphan) baseline 측정 + daily workflow 통합.</li><li>룰 5종 전부 warn 모드 — baseline 단계, strict 전환은 Phase 6 또는 별도 라운드.</li><li>bc-drift Slack 메시지에 Graph 섹션 추가, 회귀 자동 추적.</li>
-      </ul>
+      <p class="item-narrative">dep-cruiser baseline 도입. cycle·cross-BC cycle·layer·orphan 룰 5종을 warn 모드로 설정하고 bc-drift workflow에 메트릭 통합. 진짜 cross-BC cycle 59건 실측.</p>
       
       
       <div class="item-meta-row">
@@ -1457,9 +1475,7 @@
         <span>7일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>EmailPort 추상화 도입 — SES / Hiworks 어댑터를 동일 인터페이스 (send(SendEmailInput): Promise&lt;NotificationResponse&gt;) 뒤로 캡슐화.</li><li>EmailFactory 로 dispatch 통일 — EmailNotificationStrategy 내부의 if (provider === HIWORKS) sendViaHiworks() else sendViaSes() 분기와 두 private 헬퍼 제거 → emailFactory.resolve(provider).send(...) 한 줄.</li><li>Strategy 안의 Strategy 안티패턴 해소 — EmailNotificationStrategy 자체가 Strategy 인데 내부에서 또 분기를 가졌던 위장된 dispatch 를 제거. Strategy 는 도메인 흐름만, Factory 는 provider 라우팅만.</li>
-      </ul>
+      <p class="item-narrative">SES/Hiworks 이메일 어댑터를 EmailPort 인터페이스 뒤로 캡슐화하고 EmailFactory.resolve로 dispatch를 통일. EmailNotificationStrategy 내부의 provider 분기 로직 제거.</p>
       
       
       <div class="item-meta-row">
@@ -1503,9 +1519,7 @@
         <span>10일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>Electron IPC 호출 안전성 향상 및 이벤트 구독 패턴 변경</li><li>Sentry 연동 강화(Replay, 에러 샘플링, 자동화)</li><li>라우트 에러 fallback 분리 및 ErrorBoundary 복원력 개선</li>
-      </ul>
+      <p class="item-narrative">Electron IPC를 callElectronAPI 헬퍼 경유로 강제하고 husky pre-commit 가드 도입. safeEffect와 라우트 단위 fallback로 ErrorBoundary 복원력 강화.</p>
       
       
       <div class="item-meta-row">
@@ -1549,9 +1563,7 @@
         <span>10일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>Sentry 트리아지 에이전트 정의:</li><li>Sentry tesser-inc org의 prod 프로젝트(admin-prod, survey-prod, client, gui-application)만을 화이트리스트로 지정하여 30분 주기로 신규 이슈를 자동 탐지/분석/요약합니다.</li><li>dev 프로젝트/이벤트는 탐지 및 트리아지 전 과정에서 완전 배제하여 노이즈 및 불필요한 Jira 티켓 생성을 방지합니다.</li>
-      </ul>
+      <p class="item-narrative">Sentry prod 신규 이슈를 30분 주기로 자동 트리아지하는 에이전트를 정의. Seer 분석·git blame 도입 PR 식별·Severity 자동 산정·Jira draft 흐름을 명세.</p>
       
       
       <div class="item-meta-row">
@@ -1595,9 +1607,7 @@
         <span>10일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>Checkly 모니터링 시나리오 구조 개선 및 경로 추가/분리</li><li>prod 전용 Slack 알림 연동(2회 연속 실패 시만 발화)</li><li>골든패스(로그인, 주요 라우트, 계정 관리) 시나리오 추가 및 브라우저 테스트 코드 도입</li>
-      </ul>
+      <p class="item-narrative">Checkly로 로그인·주요 라우트·계정 관리 골든패스 시나리오 추가. prod에서 2회 연속 실패 시에만 #ontol-alerts로 알림이 발화되도록 정책 정리.</p>
       
       
       <div class="item-meta-row">
@@ -1606,52 +1616,6 @@
           <span class="add">+194</span>
           <span class="del">−72</span>
           <span class="files">7 files</span>
-        </span>
-        
-        
-        
-      </div>
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c5" href="https://github.com/jeongwoo0122" target="_blank" rel="noopener" title="@jeongwoo0122">
-        <img src="https://avatars.githubusercontent.com/u/169112927?v=4" alt="jeongwoo0122" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-for-clinics-client">
-    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-client/pull/72" target="_blank" rel="noopener" aria-label="feat: Sentry 강화 및 errorComponent 격리 보기"></a>
-    <div class="pr-status open">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">feat: Sentry 강화 및 errorComponent 격리</span>
-        <span class="item-id">#72</span>
-        <span class="label label-feat">feat</span>
-        <span class="badge review">Review 대기</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-for-clinics-client</span>
-        <span class="sep">·</span><span class="branch-arrow">feat/sentry-hardening<span class="arrow">→</span>main</span>
-        
-        
-        <span class="sep">·</span>
-        <span>10일 전 열림</span>
-      </div>
-      
-      <ul class="item-bullets">
-        <li>Replay 마스킹: 개인 정보 보호 강화를 위해 Sentry Replay에 텍스트/입력값 모두 마스킹(maskAllText/Inputs: true)</li><li>샘플링/환경 설정:</li><li>운영 환경에서 traces는 5%, 에러 리플레이는 100%만 활성화, 일반 리플레이는 0%</li>
-      </ul>
-      
-      
-      <div class="item-meta-row">
-        
-        <span class="diffstat">
-          <span class="add">+105</span>
-          <span class="del">−23</span>
-          <span class="files">6 files</span>
         </span>
         
         
@@ -1687,9 +1651,7 @@
         <span>10일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>init 위치: IPC 핸들러 함수 내부에서 호출되던 @sentry/electron/main init을</li><li>Preload bridge: src/preload.ts에 @sentry/electron/preload 추가.</li><li>PII 스크럽: src/sentry/scrubMedicalPii.ts. 주민번호 / 휴대전화 /</li>
-      </ul>
+      <p class="item-narrative">@sentry/electron init을 entry.ts 최상단으로 이동, preload bridge·PII 스크럽·PDFUploadWatcher 캡처·sourcemap 업로드·release 추적 등 6개 영역에서 모니터링 강화.</p>
       
       
       <div class="item-meta-row">
@@ -1733,9 +1695,7 @@
         <span>10일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>PR 위험 패턴 자동 감지 워크플로 도입(GitHub Actions)</li><li>위험 패턴 룰북 및 시스템 프롬프트 정의 파일 추가</li><li>GitHub Actions 워크플로(.github/workflows/pr-review.yml)를 추가하여, 특정 변경파일(예: clinics 앱 코드, 배포 워크플로 등) PR 발생 시 자동으로 위험 패턴 감지 및 코멘트가 등록됩니다.</li>
-      </ul>
+      <p class="item-narrative">PR에 위험 패턴(직접 electronAPI 호출, useEffect 내 throw, Sentry env 누락 등)이 포함되면 자동 코멘트를 다는 GitHub Actions 워크플로 도입.</p>
       
       
       <div class="item-meta-row">
@@ -1779,9 +1739,7 @@
         <span>73일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>선택적 빌드: detect-changes composite action으로 git diff 기반 변경 감지. 변경된 서비스만 Docker 빌드 및 ECS 배포</li><li>이미지 재사용: CD에서 packages 미변경 시 ECR의 packages-base:latest를 pull하여 재사용. 서비스 빌드를 순차→병렬 전환</li><li>워크플로우 중복 제거: setup-monorepo composite action으로 pnpm/Node.js/ontol-ai 셋업 공통화 (unit-test, e2e)</li>
-      </ul>
+      <p class="item-narrative">git diff 기반 detect-changes composite action으로 변경된 서비스만 Docker 빌드·ECS 배포. packages 미변경 시 ECR의 packages-base:latest를 재사용해 서비스 빌드를 병렬화.</p>
       
       
       <div class="item-meta-row">
@@ -1825,9 +1783,7 @@
         <span>73일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>GitHub Actions 워크플로우 추가: Blue/Green 배포 시 Gateway↔Microservice 크로스 버전 호환성 자동 검증</li><li>로컬 실행 스크립트 (scripts/cross-version-e2e.sh) 및 리포트 생성 스크립트 추가</li>
-      </ul>
+      <p class="item-narrative">Blue/Green 배포 시 Gateway↔Microservice 크로스 버전 호환성을 자동 검증하는 GitHub Actions 워크플로와 로컬 실행 스크립트 추가.</p>
       
       
       <div class="item-meta-row">
@@ -1871,9 +1827,7 @@
         <span>71일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>새롬 srm_Tesser_setffvwupd 프로시저 연동 테스트를 위한 스크립트 추가</li><li>MSSQL 8개 서버 + Oracle 4개 서버 대상 프로시저 존재 여부, 파라미터 시그니처, 드라이런(BEGIN TRAN → EXEC → ROLLBACK) 검증</li><li>테스트 결과 새롬 측에 조치 요청할 이슈 3건 발견 (세림/광동 권한, 다인 미배포, Oracle 파라미터 차이)</li>
-      </ul>
+      <p class="item-narrative">새롬 srm_Tesser_setffvwupd 프로시저를 MSSQL 8 + Oracle 4 서버 대상으로 존재 여부·시그니처·드라이런(BEGIN TRAN→EXEC→ROLLBACK) 검증. 권한·미배포·파라미터 차이 3건 발견.</p>
       
       
       <div class="item-meta-row">
@@ -1917,9 +1871,7 @@
         <span>63일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>Smartcare 마이크로서비스 신규 구축 (캠페인, 타겟팅, 카피라이팅)</li><li>AI 타겟팅 파이프라인: complex 카탈로그 프리페치(10분 캐시) + context one-shot 프롬프트로 3-5회 → 1회 AI 호출 최적화</li><li>Admin Dashboard: 캠페인 CRUD, 상세 모달, 대상자 미리보기, AI 분석 근거 패널, 삭제 토스트</li>
-      </ul>
+      <p class="item-narrative">Smartcare 마이크로서비스(캠페인·타겟팅·카피라이팅) 신규 구축. complex 카탈로그 프리페치와 context one-shot 프롬프트로 AI 호출을 3-5회 → 1회로 최적화.</p>
       
       
       <div class="item-meta-row">
@@ -1963,6 +1915,8 @@
         <span>71일 전 열림</span>
       </div>
       
+      <p class="item-narrative">ONC-622 새롬 프로시저 마이그레이션 작업의 stainless preview build 검증용 동일 내용 영문 브랜치 PR. 본 작업은 별도 PR에서 진행 중.</p>
+      
       
       <div class="item-meta-row">
         
@@ -1980,52 +1934,6 @@
     <div class="item-author-col">
       <a class="item-author av-c2" href="https://github.com/ocean25511" target="_blank" rel="noopener" title="@ocean25511">
         <img src="https://avatars.githubusercontent.com/u/245784607?v=4" alt="ocean25511" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-for-clinics-client">
-    <a class="item-link" href="https://github.com/Tesser/ontol-for-clinics-client/pull/69" target="_blank" rel="noopener" aria-label="Refactor consolidate default app 보기"></a>
-    <div class="pr-status open">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">Refactor consolidate default app</span>
-        <span class="item-id">#69</span>
-        <span class="label label-refactor">refactor</span>
-        <span class="badge review">Review 대기</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-for-clinics-client</span>
-        <span class="sep">·</span><span class="branch-arrow">REFACTOR-consolidate-default-app<span class="arrow">→</span>develop</span>
-        
-        
-        <span class="sep">·</span>
-        <span>55일 전 열림</span>
-      </div>
-      
-      <ul class="item-bullets">
-        <li>병원 전용 앱(NE, CMCV) 삭제 및 공통 구조로 통합</li><li>localStorage 키 네임스페이스화로 충돌 방지</li><li>신규 CMCV 수검자 페이지 지원</li>
-      </ul>
-      
-      
-      <div class="item-meta-row">
-        
-        <span class="diffstat">
-          <span class="add">+146</span>
-          <span class="del">−1459</span>
-          <span class="files">32 files</span>
-        </span>
-        
-        
-        
-      </div>
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c5" href="https://github.com/jeongwoo0122" target="_blank" rel="noopener" title="@jeongwoo0122">
-        <img src="https://avatars.githubusercontent.com/u/169112927?v=4" alt="jeongwoo0122" loading="lazy">
       </a>
     </div>
   </div>
@@ -2051,9 +1959,7 @@
         <span>112일 전 열림</span>
       </div>
       
-      <ul class="item-bullets">
-        <li>배포 시점의 빌드 해시 및 시간 정보가 포함된 version.json 파일 자동 생성 및 S3에 함께 배포</li><li>클라이언트에서 version.json을 비교하여 자동 버전 체크 및 필요 시 리로드 처리</li><li>Vite 플러그인 및 코드 내 build hash 주입</li>
-      </ul>
+      <p class="item-narrative">빌드 시 version.json을 S3에 함께 배포하고, 클라이언트가 30초 간격·포커스 복귀 시 hash를 비교 후 라우트 전환 시점에 자동 리로드.</p>
       
       
       <div class="item-meta-row">
@@ -2076,144 +1982,6 @@
     </div>
   </div>
   
-  <div class="item" data-repo="ontol-clinic-be-server-smc">
-    <a class="item-link" href="https://github.com/Tesser/ontol-clinic-be-server-smc/pull/131" target="_blank" rel="noopener" aria-label="OFCR-202 모듈별 README 문서 추가 보기"></a>
-    <div class="pr-status open">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">OFCR-202 모듈별 README 문서 추가</span>
-        <span class="item-id">#131</span>
-        
-        <span class="badge review">Review 대기</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-clinic-be-server-smc</span>
-        <span class="sep">·</span><span class="branch-arrow">OFCR-202-Document-SMC<span class="arrow">→</span>develop</span>
-        
-        
-        <span class="sep">·</span>
-        <span>222일 전 열림</span>
-      </div>
-      
-      <ul class="item-bullets">
-        <li>새로운 README 문서들이 추가되어 각각의 모듈에 대한 설명이 포함되었습니다.</li><li>기존에 존재하던 README 문서들이 수정되어 구조와 내용이 보강되었습니다.</li><li>A	src/module/hospital/examine-result-persistence-service/README.md</li>
-      </ul>
-      
-      
-      <div class="item-meta-row">
-        
-        <span class="diffstat">
-          <span class="add">+301</span>
-          <span class="del">−8</span>
-          <span class="files">4 files</span>
-        </span>
-        
-        
-        
-      </div>
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c3" href="https://github.com/ltyiz07" target="_blank" rel="noopener" title="@ltyiz07">
-        <img src="https://avatars.githubusercontent.com/u/68531792?v=4" alt="ltyiz07" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-clinic-be-server-smc">
-    <a class="item-link" href="https://github.com/Tesser/ontol-clinic-be-server-smc/pull/108" target="_blank" rel="noopener" aria-label="OFCSS docs: 인수인계 모듈 README 추가 보기"></a>
-    <div class="pr-status open">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">OFCSS docs: 인수인계 모듈 README 추가</span>
-        <span class="item-id">#108</span>
-        
-        <span class="badge review">Review 대기</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-clinic-be-server-smc</span>
-        <span class="sep">·</span><span class="branch-arrow">OFCSS-192-be-리포트-관련-프로젝트-인수인계<span class="arrow">→</span>develop</span>
-        
-        
-        <span class="sep">·</span>
-        <span>320일 전 열림</span>
-      </div>
-      
-      <ul class="item-bullets">
-        <li>: 검사 모듈에 대한 정보 추가</li><li>: 파일 핸들러 PDF 관련 설명 추가</li><li>: 해석 모듈에 대한 설명 추가</li>
-      </ul>
-      
-      
-      <div class="item-meta-row">
-        
-        <span class="diffstat">
-          <span class="add">+1649</span>
-          <span class="del">−0</span>
-          <span class="files">4 files</span>
-        </span>
-        
-        
-        
-      </div>
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c1" href="https://github.com/h-gyeom" target="_blank" rel="noopener" title="@h-gyeom">
-        <img src="https://avatars.githubusercontent.com/u/114989938?v=4" alt="h-gyeom" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
-  <div class="item" data-repo="ontol-clinic-be-server-smc">
-    <a class="item-link" href="https://github.com/Tesser/ontol-clinic-be-server-smc/pull/107" target="_blank" rel="noopener" aria-label="OFCSS-315 fix: gin 인덱스 제거 검진 장소 필드 설정 보기"></a>
-    <div class="pr-status open">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
-    </div>
-    <div class="item-body">
-      <div class="item-title-row">
-        <span class="item-title">OFCSS-315 fix: gin 인덱스 제거 검진 장소 필드 설정</span>
-        <span class="item-id">#107</span>
-        <span class="label label-fix">fix</span>
-        <span class="badge review">Review 대기</span>
-      </div>
-      <div class="item-subline">
-        <span class="repo-name">ontol-clinic-be-server-smc</span>
-        <span class="sep">·</span><span class="branch-arrow">OFCSS-315-be-검진-목록-검진-장소-필드-추가<span class="arrow">→</span>develop</span>
-        
-        
-        <span class="sep">·</span>
-        <span>344일 전 열림</span>
-      </div>
-      
-      <ul class="item-bullets">
-        <li>검진 결과 엔티티에서 gin 인덱스를 제거하여 데이터 처리 성능을 개선</li><li>검진 결과 서비스와 관련된 코드에서 검진 장소 필드를 추가 및 설정하여 데이터의 정확성을 높임</li><li>데이터베이스 마이그레이션 파일에서 인덱스 제거와 관련된 주의 깊은 리뷰가 필요합니다.</li>
-      </ul>
-      
-      
-      <div class="item-meta-row">
-        
-        <span class="diffstat">
-          <span class="add">+43</span>
-          <span class="del">−3</span>
-          <span class="files">6 files</span>
-        </span>
-        
-        
-        
-      </div>
-      
-    </div>
-    <div class="item-author-col">
-      <a class="item-author av-c1" href="https://github.com/h-gyeom" target="_blank" rel="noopener" title="@h-gyeom">
-        <img src="https://avatars.githubusercontent.com/u/114989938?v=4" alt="h-gyeom" loading="lazy">
-      </a>
-    </div>
-  </div>
-  
         </details>
       
     
@@ -2221,7 +1989,7 @@
   
 
   <div class="footer">
-    오늘의 작업 · 매일 매일 10:05 KST 자동 갱신 · 마지막 빌드: 2026-05-26 16:37 KST
+    오늘의 작업 · 매일 매일 10:05 KST 자동 갱신 · 마지막 빌드: 2026-05-26 16:45 KST
   </div>
 </div>
 
