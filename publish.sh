@@ -6,8 +6,7 @@
 #   bash publish.sh
 #
 # 사전 조건:
-#   - 이 폴더(daily-work-dashboard)가 Tesser/daily-work-dashboard repo의 clone이어야 함
-#     (또는 git remote가 그 repo로 설정되어 있어야 함)
+#   - 이 폴더가 jeongwoo0122/daily-work-dashboard repo의 clone이어야 함
 #   - gh CLI로 인증되어 있거나, SSH key가 등록되어 있어야 함
 #
 # 동작:
@@ -25,7 +24,7 @@ if ! git rev-parse --git-dir >/dev/null 2>&1; then
   echo "  최초 1회 셋업:" >&2
   echo "    cd \"$DIR\"" >&2
   echo "    git init -b main" >&2
-  echo "    git remote add origin git@github.com:Tesser/daily-work-dashboard.git" >&2
+  echo "    git remote add origin git@github.com:jeongwoo0122/daily-work-dashboard.git" >&2
   echo "    git add . && git commit -m 'Initial' && git push -u origin main" >&2
   exit 1
 fi
