@@ -1,6 +1,6 @@
 # Cowork scheduled task용 프롬프트
 
-매일 9시에 Cowork이 이 prompt를 실행하도록 등록합니다.
+매일 10시에 Cowork이 이 prompt를 실행하도록 등록합니다.
 
 현재 설정:
 - 호스팅 repo: `jeongwoo0122/daily-work-dashboard`
@@ -56,4 +56,4 @@ Claude에게 다음과 같이 말하면 자동 등록됨:
 
 또는 직접 `mcp__scheduled-tasks__create_scheduled_task` 호출:
 - prompt: 위 prompt 블록 (WORKDIR 채워서)
-- cronExpression: `"0 9 * * *"` (사용자 local time 기준)
+- cronExpression: `"0 10 * * *"` (사용자 local time 기준)
