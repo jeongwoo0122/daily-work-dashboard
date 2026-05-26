@@ -261,7 +261,7 @@ def fetch_repo(gh: Github, full: str, cfg: dict, today_start_utc: datetime, toda
     # ---- 열려 있는 PR (open + draft) ----
     try:
         opens = repo.get_pulls(state="open", sort="updated", direction="desc")
-        for pr in opens[:30]:
+        for pr in list(opens.get_page(0))[:30]:
             gh_labels = [lbl.name for lbl in pr.labels]
             labels = infer_labels(pr.title, pr.head.ref if pr.head else "", gh_labels, keyword_map)
             author = pr.user
@@ -320,7 +320,7 @@ def fetch_repo(gh: Github, full: str, cfg: dict, today_start_utc: datetime, toda
                 wf_name = (run.name or "").lower()
                 if not any(kw in wf_name for kw in deploy_keywords):
                     continue
-                actor = run.actor
+                actor = run.raw_data.get("actor")
                 short_sha = (run.head_sha or "")[:7]
                 # 환경 판정 (heuristic)
                 if "staging" in wf_name or "stage" in wf_name:
@@ -345,11 +345,11 @@ def fetch_repo(gh: Github, full: str, cfg: dict, today_start_utc: datetime, toda
                     "diffstat": None,
                     "linear": None,
                     "author": {
-                        "handle": actor.login if actor else "ghost",
-                        "initial": initial(actor.login if actor else "?"),
-                        "profile_url": actor.html_url if actor else "#",
-                        "avatar_url": actor.avatar_url if actor else "",
-                        "color_idx": color_idx_for(actor.login if actor else "ghost"),
+                        "handle": actor.get("login", "ghost") if actor else "ghost",
+                        "initial": initial(actor.get("login", "?") if actor else "?"),
+                        "profile_url": actor.get("html_url", "#") if actor else "#",
+                        "avatar_url": actor.get("avatar_url", "") if actor else "",
+                        "color_idx": color_idx_for(actor.get("login", "ghost") if actor else "ghost"),
                     },
                 }
                 items.append(FetchedItem("deployed", created_utc.timestamp(), payload))
