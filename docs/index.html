@@ -1989,16 +1989,27 @@
   
 
   <div class="footer">
-    오늘의 작업 · 매일 매일 10:05 KST 자동 갱신 · 마지막 빌드: 2026-05-26 16:45 KST
+    오늘의 작업 · 매일 매일 10:05 KST 자동 갱신 · 마지막 빌드: 2026-05-26 16:50 KST
   </div>
 </div>
 
 <script>
-  // Repo 필터 칩 + 섹션 카운트 동기화
+  // Repo 필터 칩 + 섹션 카운트 동기화 + details 펼침 시 재적용
   (function(){
     var chips = document.querySelectorAll('.filters .chip');
-    var items = document.querySelectorAll('.item[data-repo]');
     var sections = document.querySelectorAll('.section');
+
+    function applyFilter(target){
+      // querySelectorAll을 매번 다시 호출해서 details 안의 카드도 포함되도록 보장
+      document.querySelectorAll('.item[data-repo]').forEach(function(it){
+        if (target === '*' || it.getAttribute('data-repo') === target) {
+          it.classList.remove('hidden-by-filter');
+        } else {
+          it.classList.add('hidden-by-filter');
+        }
+      });
+      updateSectionCounts();
+    }
 
     function updateSectionCounts(){
       sections.forEach(function(section){
@@ -2012,19 +2023,23 @@
       });
     }
 
+    function activeTarget(){
+      var activeChip = document.querySelector('.filters .chip.active');
+      return activeChip ? activeChip.getAttribute('data-repo') : '*';
+    }
+
     chips.forEach(function(chip){
       chip.addEventListener('click', function(){
         chips.forEach(function(c){ c.classList.remove('active'); });
         chip.classList.add('active');
-        var target = chip.getAttribute('data-repo');
-        items.forEach(function(it){
-          if (target === '*' || it.getAttribute('data-repo') === target) {
-            it.classList.remove('hidden-by-filter');
-          } else {
-            it.classList.add('hidden-by-filter');
-          }
-        });
-        updateSectionCounts();
+        applyFilter(chip.getAttribute('data-repo'));
+      });
+    });
+
+    // details(접힘 영역, "더 보기" / Release 머지 / Dev 배포)가 펼쳐질 때 active 필터 재적용
+    document.querySelectorAll('details').forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if (d.open) applyFilter(activeTarget());
       });
     });
   })();
